@@ -8,10 +8,10 @@ public class CartaoPonto{
     private String minChegada;
     private String horaSaida;
     private String minSaida;
-
+    int totalHorasTrabalhadas;
    
     public String Informacoes() {
-        return "empregado: " + empregado.getNome() + "\nhoraChegada: " + horaChegada + ":" + minChegada + "\nhoraSaida: " + horaSaida + ":" + minSaida+"\n\n";
+        return "empregado: " + empregado.getNome() + "\nhora Chegada: " + horaChegada + ":" + minChegada + "\nhora Saida: " + horaSaida + ":" + minSaida+"\nhoras Trabalhadas: "+totalHorasTrabalhadas+"\n\n";
     }
     
 
@@ -21,22 +21,23 @@ public class CartaoPonto{
         this.minChegada  = minChegada ;
         this.horaSaida   = horaSaida  ;  
         this.minSaida    = minSaida   ;
+        calcularHorasTrabalhadas();
     }
     
-   /* public float calcularHorasTrabalhadas(){
+    public void calcularHorasTrabalhadas(){
         
-        int contHora=0;
-        for(int i = horaChegada ; i <= horaSaida ; i++){
-            contHora++;
+        int min  =  Integer.parseInt(minChegada)  + Integer.parseInt(minSaida);
+        int hora =  Integer.parseInt(horaChegada) + Integer.parseInt(horaSaida);
+        
+        int minSobrados=min;
+        for(int i = 0 ; i <= min ; i++){ 
+           if(min > 59){
+             hora = hora + 1;
+             minSobrados -= i; //utilizar os minutos quando chegar a hora certa
+           }
         }
-        
-        int contMin=0;
-        for(int i = minChegada ;  i <= minSaida  ; i++){
-            contMin++;
-        }
-        
-        return 1;
-    }*/
+        totalHorasTrabalhadas += hora;
+    }
 
     public Empregado getEmpregado() {
         return empregado;
