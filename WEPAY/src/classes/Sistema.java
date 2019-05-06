@@ -10,6 +10,7 @@ public class Sistema {
     private ArrayList<FolhaDePagamento>folhaDePagamentos;
     private ArrayList<Vendas>vendas;
     private ArrayList<CartaoPonto> ponto;
+    private ArrayList<TaxaDeServicos> taxaDeServicos;
     private int idEmpregados;
    
     public Sistema(){
@@ -17,6 +18,7 @@ public class Sistema {
       folhaDePagamentos =  new ArrayList<FolhaDePagamento>();
       vendas            =  new ArrayList<Vendas>();
       ponto             =  new ArrayList<CartaoPonto>();
+      taxaDeServicos    =  new ArrayList<TaxaDeServicos>();
     }
     
     public boolean cadastrarFuncionario(String nome, String endereco, String tipo){
@@ -45,7 +47,8 @@ public class Sistema {
         
         for(int i = 0 ; i < empregado.size() ; i++){
            if(empregado.get(i).getId() == codEmpregado){
-              FolhaDePagamento f = new FolhaDePagamento(dia, mes, ano,codEmpregado, empregado.get(i).getNome(), salarioBruto);
+              FolhaDePagamento f = new FolhaDePagamento(dia, mes, ano,codEmpregado, empregado.get(i).getNome(),
+                                                        salarioBruto,taxaDeServicos.get(i));
               folhaDePagamentos.add(f);
               return folhaDePagamentos.toString();
            }
@@ -56,6 +59,11 @@ public class Sistema {
     public void lancarResultadoVendas(int codEmpregado,String nomeEmpregado, String produtoVendido, float valorProduto){
         Vendas venda = new Vendas(codEmpregado, nomeEmpregado, produtoVendido, valorProduto);
         vendas.add(venda);
+    }
+    
+    public void lancarTaxaDeServicos(int idEmpregado, String nomeEmpregado, boolean planoDeSaude, boolean auxilioCreche){
+      TaxaDeServicos servicos = new TaxaDeServicos(idEmpregado, nomeEmpregado, planoDeSaude, auxilioCreche);
+      taxaDeServicos.add(servicos);
     }
     
     public ArrayList<Empregado> getEmpregado() {

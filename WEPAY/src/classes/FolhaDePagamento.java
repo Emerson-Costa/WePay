@@ -10,12 +10,14 @@ public class FolhaDePagamento {
     private float salarioDesconto;
     private float remuneracaoVariavel;
     private float inss;
+    private float planoDeSaude;
+    private float auxilioCreche;
     
-    FolhaDePagamento(int dia, int mes, int ano,int codEmpregado, String nomeDoEmpregado, float salarioBruto){
+    FolhaDePagamento(int dia, int mes, int ano,int codEmpregado, String nomeDoEmpregado, float salarioBruto, TaxaDeServicos taxaDeServicos){
         this.data = new Data(dia, mes, ano);
         this.nomeDoEmpregado = nomeDoEmpregado;
         this.salarioBruto = salarioBruto;
-        this.salarioDesconto = calcularValorSalario();
+        this.salarioDesconto = calcularValorSalario(taxaDeServicos);
     }
     
     public float impostos(){
@@ -38,24 +40,30 @@ public class FolhaDePagamento {
         return imposto;
     }
     
-    public float desconto( ){
+    public float descontoImpostos( ){
+       
        return salarioBruto * impostos();
     }
     
-    public float calcularValorSalario( ){
-        
-       return salarioBruto - desconto();
+    public float calcularValorSalario(TaxaDeServicos taxaDeServicos){
+       if(taxaDeServicos.isAuxilioCreche()){
+         planoDeSaude = taxaDeServicos.taxaPlanoSaude(salarioBruto);
+       }
+       
+       if(taxaDeServicos.isPlanoDeSaude()){
+         auxilioCreche = taxaDeServicos.taxaAuxilioCreche(salarioBruto);
+       }
+       return salarioBruto - descontoImpostos() - planoDeSaude - auxilioCreche;
     }
 
     @Override
     public String toString() {
         return "data do pagamento: "+data.toString()+"\nnome do empregado: "+nomeDoEmpregado+
                  "\nsalario bruto: "+salarioBruto+"\nsalario com desconto: "+salarioDesconto+
-                 "\ndesconto inss: "+inss+"\n";
+                 "\ndesconto inss: "+inss+"\ndesconto plano de saude: "+planoDeSaude+
+                 "\ndesconto auxilio creche: "+auxilioCreche;
     }
 
-    
-    
     ////////////////////////////Encapsulamento//////////////////////////////////
     public Data getData() {
         return data;
@@ -112,5 +120,21 @@ public class FolhaDePagamento {
 
     public void setRemuneracaoVariavel(float remuneracaoVariavel) {
         this.remuneracaoVariavel = remuneracaoVariavel;
+    }
+
+    public float getPlanoDeSaude() {
+        return planoDeSaude;
+    }
+
+    public void setPlanoDeSaude(float planoDeSaude) {
+        this.planoDeSaude = planoDeSaude;
+    }
+
+    public float getCreche() {
+        return auxilioCreche;
+    }
+
+    public void setCreche(float creche) {
+        this.auxilioCreche = creche;
     }
 }
