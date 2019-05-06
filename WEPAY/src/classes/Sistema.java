@@ -6,28 +6,31 @@ import java.util.ArrayList;
 
 public class Sistema {
     
-    private ArrayList<Empregado> empregado =  new ArrayList<Empregado>()  ;
-    private ArrayList<CartaoPonto> ponto   =  new ArrayList<CartaoPonto>();
-    private int qutdEmpregado;
+    private ArrayList<Empregado> empregado;
+    private ArrayList<FolhaDePagamento>folhaDePagamentos;
+    private ArrayList<Vendas>vendas;
+    private ArrayList<CartaoPonto> ponto;
+    private int idEmpregados;
    
-    public int gerarID(){
-        return qutdEmpregado;
+    public Sistema(){
+      empregado         =  new ArrayList<Empregado>();
+      folhaDePagamentos =  new ArrayList<FolhaDePagamento>();
+      vendas            =  new ArrayList<Vendas>();
+      ponto             =  new ArrayList<CartaoPonto>();
     }
     
     public boolean cadastrarFuncionario(String nome, String endereco, String tipo){
          Empregado e = new Empregado(nome, endereco, tipo);
-         e.setId(gerarID());
+         e.setId(idEmpregados);
+         idEmpregados++;
          empregado.add(e);
-         qutdEmpregado++;
-         
          return true;    
     }
     
     public boolean removerFuncionario(int id){
-        for(int i = 0 ; i < qutdEmpregado ; i++){
+        for(int i = 0 ; i < empregado.size() ; i++){
             if(empregado.get(i).getId() == id){
                 empregado.remove(i);
-                qutdEmpregado--;
                 return true;
             }
         }
@@ -37,7 +40,23 @@ public class Sistema {
     public void lancarPontoCartao(int id){
         
     }
-
+    
+     public String emitirFolhaDePagamento(int codEmpregado, int dia, int mes, int ano, float salarioBruto){
+        
+        for(int i = 0 ; i < empregado.size() ; i++){
+           if(empregado.get(i).getId() == codEmpregado){
+              FolhaDePagamento f = new FolhaDePagamento(dia, mes, ano,codEmpregado, empregado.get(i).getNome(), salarioBruto);
+              folhaDePagamentos.add(f);
+              return folhaDePagamentos.toString();
+           }
+        }      
+        return "Funcionário não encontrado!";
+    }
+    
+    public void lancarResultadoVendas(int codEmpregado,String nomeEmpregado, String produtoVendido, float valorProduto){
+        Vendas venda = new Vendas(codEmpregado, nomeEmpregado, produtoVendido, valorProduto);
+        vendas.add(venda);
+    }
     
     public ArrayList<Empregado> getEmpregado() {
         return empregado;
@@ -56,18 +75,18 @@ public class Sistema {
     }
 
     public int getQutdEmpregado() {
-        return qutdEmpregado;
+        return idEmpregados;
     }
 
     public void setQutdEmpregado(int qutdEmpregado) {
-        this.qutdEmpregado = qutdEmpregado;
+        this.idEmpregados = qutdEmpregado;
     }
 
    
     public String imprimirFuncionarios() {
         
         String s = "";
-        for(int i = 0 ; i < qutdEmpregado ; i++){
+        for(int i = 0 ; i < empregado.size() ; i++){
             s += empregado.get(i).toString();
         }
         return s;

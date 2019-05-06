@@ -182,6 +182,7 @@ public WepayProject w;
        
        int id=  Integer.parseInt(jCod.getText());
        Empregado e =  w.s.getEmpregado().get(id);
+       
        CartaoPonto cartaoPonto = new CartaoPonto(e,jHora.getSelectedItem()+"",jMin.getSelectedItem()+""
                                                 ,jHoraSair.getSelectedItem()+"",jMinSair.getSelectedItem()+""); 
        w.s.getPonto().add(cartaoPonto);

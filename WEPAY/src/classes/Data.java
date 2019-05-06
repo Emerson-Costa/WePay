@@ -13,6 +13,12 @@ public class Data {
         this.ano = ano;
     }
 
+    @Override
+    public String toString() {
+       return dia+"/"+mes+"/"+ano;
+    }
+
+    
     public int getAno() {
         return ano;
     }

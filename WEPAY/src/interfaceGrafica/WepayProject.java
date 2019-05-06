@@ -25,6 +25,10 @@ public WepayProject() {
         jRemover = new javax.swing.JToggleButton();
         jListar = new javax.swing.JToggleButton();
         jListarPonto = new javax.swing.JToggleButton();
+        jlLancarResultVendas = new javax.swing.JToggleButton();
+        jEmitirFolhaPagamentos = new javax.swing.JToggleButton();
+        jLancarTaxaServ = new javax.swing.JToggleButton();
+        jAlterarCadEmpregado = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,6 +71,34 @@ public WepayProject() {
             }
         });
 
+        jlLancarResultVendas.setText("LANCAR RESULTADO DA VENDAS");
+        jlLancarResultVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jlLancarResultVendasActionPerformed(evt);
+            }
+        });
+
+        jEmitirFolhaPagamentos.setText("EMITIR FOLHA DE PAGAMAENTOS");
+        jEmitirFolhaPagamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jEmitirFolhaPagamentosActionPerformed(evt);
+            }
+        });
+
+        jLancarTaxaServ.setText("LANCAR TAXA DE SERVICOS");
+        jLancarTaxaServ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jLancarTaxaServActionPerformed(evt);
+            }
+        });
+
+        jAlterarCadEmpregado.setText("ALTERAR CADASTO");
+        jAlterarCadEmpregado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAlterarCadEmpregadoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,12 +110,16 @@ public WepayProject() {
                     .addComponent(jCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jInserirPonto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jListarPonto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jListarPonto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlLancarResultVendas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jEmitirFolhaPagamentos, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                    .addComponent(jLancarTaxaServ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jAlterarCadEmpregado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(43, 43, 43))
             .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
+                .addGap(102, 102, 102)
                 .addComponent(jLabel1)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,7 +128,9 @@ public WepayProject() {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jCadastrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jAlterarCadEmpregado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jRemover)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jInserirPonto)
@@ -100,7 +138,13 @@ public WepayProject() {
                 .addComponent(jListar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jListarPonto)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlLancarResultVendas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jEmitirFolhaPagamentos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLancarTaxaServ)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -138,6 +182,22 @@ public WepayProject() {
         
     }//GEN-LAST:event_jListarPontoActionPerformed
 
+    private void jlLancarResultVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlLancarResultVendasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlLancarResultVendasActionPerformed
+
+    private void jEmitirFolhaPagamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEmitirFolhaPagamentosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jEmitirFolhaPagamentosActionPerformed
+
+    private void jLancarTaxaServActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLancarTaxaServActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLancarTaxaServActionPerformed
+
+    private void jAlterarCadEmpregadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAlterarCadEmpregadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jAlterarCadEmpregadoActionPerformed
+
     
     public static void main(String args[]) {
        
@@ -149,11 +209,15 @@ public WepayProject() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton jAlterarCadEmpregado;
     private javax.swing.JToggleButton jCadastrar;
+    private javax.swing.JToggleButton jEmitirFolhaPagamentos;
     private javax.swing.JToggleButton jInserirPonto;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JToggleButton jLancarTaxaServ;
     private javax.swing.JToggleButton jListar;
     private javax.swing.JToggleButton jListarPonto;
     private javax.swing.JToggleButton jRemover;
+    private javax.swing.JToggleButton jlLancarResultVendas;
     // End of variables declaration//GEN-END:variables
 }

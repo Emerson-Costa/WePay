@@ -31,13 +31,17 @@
                   <Component id="jInserirPonto" alignment="0" max="32767" attributes="0"/>
                   <Component id="jListar" alignment="0" max="32767" attributes="0"/>
                   <Component id="jListarPonto" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jlLancarResultVendas" alignment="1" max="32767" attributes="0"/>
+                  <Component id="jEmitirFolhaPagamentos" alignment="0" pref="271" max="32767" attributes="0"/>
+                  <Component id="jLancarTaxaServ" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jAlterarCadEmpregado" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="91" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -48,7 +52,9 @@
               <Component id="jLabel1" min="-2" pref="21" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jCadastrar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jAlterarCadEmpregado" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jRemover" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jInserirPonto" min="-2" max="-2" attributes="0"/>
@@ -56,7 +62,13 @@
               <Component id="jListar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jListarPonto" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jlLancarResultVendas" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jEmitirFolhaPagamentos" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLancarTaxaServ" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -111,6 +123,38 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jListarPontoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JToggleButton" name="jlLancarResultVendas">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="LANCAR RESULTADO DA VENDAS"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jlLancarResultVendasActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JToggleButton" name="jEmitirFolhaPagamentos">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="EMITIR FOLHA DE PAGAMAENTOS"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jEmitirFolhaPagamentosActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JToggleButton" name="jLancarTaxaServ">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="LANCAR TAXA DE SERVICOS"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jLancarTaxaServActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JToggleButton" name="jAlterarCadEmpregado">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="ALTERAR CADASTO"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jAlterarCadEmpregadoActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
