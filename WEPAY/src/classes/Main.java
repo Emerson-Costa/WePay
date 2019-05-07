@@ -25,7 +25,7 @@ public class Main {
        
        /************************************************Teste de classes do Projeto*************************************************/
        Empregado e        = new Empregado("Emerson Jose da Silva Costa","Rua Nacle Miguel Habib","Assalariado");
-       CartaoPonto p      = new CartaoPonto(e,"12","00","15","00");
+       CartaoPonto p      = new CartaoPonto(e,"12","30","18","10");
        TaxaDeServicos t   = new TaxaDeServicos(0,e.getNome(), true,true);
        FolhaDePagamento f = new FolhaDePagamento(11,11,2011,0,"Emerson J Silva Costa", 2000,t);
        Vendas v           = new Vendas(0,"Emerson J Silva Costa","Escova de dentes",3.50f);

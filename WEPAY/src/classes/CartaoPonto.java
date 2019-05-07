@@ -9,9 +9,10 @@ public class CartaoPonto{
     private String horaSaida;
     private String minSaida;
     int totalHorasTrabalhadas;
+    String horasTrabalhadas;
    
     public String toString() {
-        return "empregado: " + empregado.getNome() + "\nhora Chegada: " + horaChegada + ":" + minChegada + "\nhora Saida: " + horaSaida + ":" + minSaida+"\nhoras Trabalhadas: "+totalHorasTrabalhadas+"\n\n";
+        return "empregado: " + empregado.getNome() + "\nhora Chegada: " + horaChegada + ":" + minChegada + "\nhora Saida: " + horaSaida + ":" + minSaida+"\nhoras Trabalhadas: "+horasTrabalhadas+"\n\n";
     }
     
 
@@ -26,17 +27,27 @@ public class CartaoPonto{
     
     public void calcularHorasTrabalhadas(){
         
-        int min  =  Integer.parseInt(minChegada)  + Integer.parseInt(minSaida);
-        int hora =  Integer.parseInt(horaChegada) + Integer.parseInt(horaSaida);
+        int horaChegada1 =  Integer.parseInt(horaChegada);  
+        int minChegada1  =  Integer.parseInt(minChegada);   
+        int horaSaida1   =  Integer.parseInt(horaSaida);
+        int minSaida1    =  Integer.parseInt(minSaida);
         
-        int minSobrados = min;
-        for(int i = 0 ; i <= min ; i++){ 
-           if(min > 59){
-             hora = hora + 1;
-             minSobrados -= i; //utilizar os minutos quando chegar a hora certa
-           }
+        int contHoras=0;
+        for(int i = horaChegada1; i < horaSaida1; i++){
+            contHoras++;
         }
-        totalHorasTrabalhadas += hora;
+        
+        int minutos = minChegada1 + minSaida1;
+        int contMin=0;
+        for(int i = 0 ; i < minutos;i++){
+            contMin++;
+            if(contMin > 59){
+              contHoras += 1;
+              contMin=0;
+            }
+        }
+        totalHorasTrabalhadas += contHoras;
+        horasTrabalhadas = contHoras+":"+contMin;
     }
 
     public Empregado getEmpregado() {
