@@ -9,7 +9,7 @@ public class FolhaDePagamento {
     private float salarioBruto;
     private float salarioDesconto;
     private float remuneracaoVariavel;
-    private float inss;
+    private String inss;
     private float planoDeSaude;
     private float auxilioCreche;
     
@@ -18,24 +18,26 @@ public class FolhaDePagamento {
         this.nomeDoEmpregado = nomeDoEmpregado;
         this.salarioBruto = salarioBruto;
         this.salarioDesconto = calcularValorSalario(taxaDeServicos);
+        this.codEmpregado = codEmpregado;
     }
     
     public float impostos(){
         
         //INSS
         float imposto=0;
-        if(salarioBruto >= 1.693){
-           imposto = 8/100;
+        if(salarioBruto <= 1693){
+           imposto = 8f/100;
         }
         
-        if(salarioBruto >= 1693 && salarioBruto < 2822 ){
-           imposto = 9/100;
+        if(salarioBruto > 1693 && salarioBruto <= 2822 ){
+           imposto = 9f/100;
         }
         
         if(salarioBruto > 2822){
-           imposto = 11/100; 
+           imposto = 11f/100; 
         }
-        inss = imposto;
+        
+        inss = imposto * 100+"%";
         
         return imposto;
     }
@@ -46,14 +48,16 @@ public class FolhaDePagamento {
     }
     
     public float calcularValorSalario(TaxaDeServicos taxaDeServicos){
-      /* if(taxaDeServicos.isAuxilioCreche()){
+        
+       if(taxaDeServicos.isPlanoDeSaude()){
          planoDeSaude = taxaDeServicos.taxaPlanoSaude(salarioBruto);
        }
        
-       if(taxaDeServicos.isPlanoDeSaude()){
+       if(taxaDeServicos.isAuxilioCreche()){
          auxilioCreche = taxaDeServicos.taxaAuxilioCreche(salarioBruto);
-       }*/
-       return salarioBruto - descontoImpostos() /*- planoDeSaude - auxilioCreche*/;
+       }
+       
+       return salarioBruto - descontoImpostos() - planoDeSaude - auxilioCreche;
     }
 
     @Override
@@ -61,7 +65,7 @@ public class FolhaDePagamento {
         return "data do pagamento: "+data.toString()+"\nnome do empregado: "+nomeDoEmpregado+
                  "\nsalario bruto: "+salarioBruto+"\nsalario com desconto: "+salarioDesconto+
                  "\ndesconto inss: "+inss+"\ndesconto plano de saude: "+planoDeSaude+
-                 "\ndesconto auxilio creche: "+auxilioCreche;
+                 "\ndesconto auxilio creche: "+auxilioCreche+"\n\n";
     }
 
     ////////////////////////////Encapsulamento//////////////////////////////////
@@ -96,14 +100,6 @@ public class FolhaDePagamento {
 
     public void setSalarioDesconto(float salarioDesconto) {
         this.salarioDesconto = salarioDesconto;
-    }
-
-    public float getInss() {
-        return inss;
-    }
-
-    public void setInss(float inss) {
-        this.inss = inss;
     }
 
     public int getCodEmpregado() {

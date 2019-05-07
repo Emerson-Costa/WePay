@@ -124,7 +124,7 @@ public class Sistema {
         
         String s = "";
         for(int i = 0 ; i < ponto.size() ; i++){
-            s += ponto.get(i).Informacoes();
+            s += ponto.get(i).toString();
         }
         return s;
     }

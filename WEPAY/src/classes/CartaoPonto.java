@@ -10,7 +10,7 @@ public class CartaoPonto{
     private String minSaida;
     int totalHorasTrabalhadas;
    
-    public String Informacoes() {
+    public String toString() {
         return "empregado: " + empregado.getNome() + "\nhora Chegada: " + horaChegada + ":" + minChegada + "\nhora Saida: " + horaSaida + ":" + minSaida+"\nhoras Trabalhadas: "+totalHorasTrabalhadas+"\n\n";
     }
     
@@ -29,7 +29,7 @@ public class CartaoPonto{
         int min  =  Integer.parseInt(minChegada)  + Integer.parseInt(minSaida);
         int hora =  Integer.parseInt(horaChegada) + Integer.parseInt(horaSaida);
         
-        int minSobrados=min;
+        int minSobrados = min;
         for(int i = 0 ; i <= min ; i++){ 
            if(min > 59){
              hora = hora + 1;

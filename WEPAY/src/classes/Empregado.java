@@ -49,7 +49,7 @@ public class Empregado {
 
     @Override
     public String toString() {
-        return "\nnome:" + nome + "\nendereco=" + endereco + "\ntipo=" + tipo + "\nid=" + id +"\n";
+        return "\nnome:" + nome + "\nendereco: " + endereco + "\ntipo: " + tipo + "\nid: " + id +"\n\n";
     }
     
     
