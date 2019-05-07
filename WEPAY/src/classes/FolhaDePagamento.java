@@ -46,14 +46,14 @@ public class FolhaDePagamento {
     }
     
     public float calcularValorSalario(TaxaDeServicos taxaDeServicos){
-       if(taxaDeServicos.isAuxilioCreche()){
+      /* if(taxaDeServicos.isAuxilioCreche()){
          planoDeSaude = taxaDeServicos.taxaPlanoSaude(salarioBruto);
        }
        
        if(taxaDeServicos.isPlanoDeSaude()){
          auxilioCreche = taxaDeServicos.taxaAuxilioCreche(salarioBruto);
-       }
-       return salarioBruto - descontoImpostos() - planoDeSaude - auxilioCreche;
+       }*/
+       return salarioBruto - descontoImpostos() /*- planoDeSaude - auxilioCreche*/;
     }
 
     @Override

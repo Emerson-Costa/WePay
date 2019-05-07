@@ -14,6 +14,7 @@ public class Sistema {
     private int idEmpregados;
    
     public Sistema(){
+        
       empregado         =  new ArrayList<Empregado>();
       folhaDePagamentos =  new ArrayList<FolhaDePagamento>();
       vendas            =  new ArrayList<Vendas>();
@@ -27,6 +28,13 @@ public class Sistema {
          idEmpregados++;
          empregado.add(e);
          return true;    
+    }
+    
+    public boolean alterarCadastroFuncionario(int indice,String nome, String endereco, String tipo){
+        empregado.get(indice).setNome(nome);
+        empregado.get(indice).setEndereco(endereco);
+        empregado.get(indice).setTipo(tipo);
+        return true;
     }
     
     public boolean removerFuncionario(int id){
@@ -56,14 +64,26 @@ public class Sistema {
         return "Funcionário não encontrado!";
     }
     
-    public void lancarResultadoVendas(int codEmpregado,String nomeEmpregado, String produtoVendido, float valorProduto){
-        Vendas venda = new Vendas(codEmpregado, nomeEmpregado, produtoVendido, valorProduto);
-        vendas.add(venda);
+    public boolean lancarResultadoVendas(int codEmpregado, String produtoVendido, float valorProduto){
+        for(int i = 0; i < empregado.size() ; i++){
+            if(empregado.get(i).getId() == codEmpregado){
+                Vendas venda = new Vendas(codEmpregado, empregado.get(i).getNome(), produtoVendido, valorProduto);
+                vendas.add(venda);
+                return true;
+            }
+        }
+        return false;
     }
     
-    public void lancarTaxaDeServicos(int idEmpregado, String nomeEmpregado, boolean planoDeSaude, boolean auxilioCreche){
-      TaxaDeServicos servicos = new TaxaDeServicos(idEmpregado, nomeEmpregado, planoDeSaude, auxilioCreche);
-      taxaDeServicos.add(servicos);
+    public boolean lancarTaxaDeServicos(int idEmpregado, boolean planoDeSaude, boolean auxilioCreche){
+      for(int i = 0; i < empregado.size() ; i++){
+            if(empregado.get(i).getId() == idEmpregado){
+                TaxaDeServicos servicos = new TaxaDeServicos(idEmpregado,empregado.get(i).getNome(), planoDeSaude, auxilioCreche);
+                taxaDeServicos.add(servicos);
+                return true;
+            }
+        }
+        return false;
     }
     
     public ArrayList<Empregado> getEmpregado() {

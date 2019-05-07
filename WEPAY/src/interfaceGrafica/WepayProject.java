@@ -7,12 +7,27 @@ import classes.Sistema;
 public class WepayProject extends javax.swing.JFrame {
 
 
-Sistema s = new Sistema();
-CadastrarEmpregado cadastrarEmpregado = new CadastrarEmpregado();
-RemoverEmpregado removerEmpregado = new RemoverEmpregado();
-Ponto ponto = new Ponto();
+Sistema                 s;
+CadastrarEmpregado      cadastrarEmpregado;
+RemoverEmpregado        removerEmpregado;
+Ponto                   ponto;
+LancarResultadoVendas   lancarResultadoVenda;
+EmitirFolhaPagamento    emitirFolhaPagamento;
+CadastrarTaxaDeServicos cadastrarTaxaServico;
+AlterarCadastroUsuario  alterarCadastroUsuario;
 
-public WepayProject() {
+public WepayProject(){
+    
+    this.setLocationRelativeTo(null);
+    s = new Sistema();
+    cadastrarEmpregado     = new CadastrarEmpregado();
+    removerEmpregado       = new RemoverEmpregado();
+    ponto                  = new Ponto();
+    lancarResultadoVenda   = new LancarResultadoVendas();
+    emitirFolhaPagamento   = new EmitirFolhaPagamento();
+    cadastrarTaxaServico   = new CadastrarTaxaDeServicos();
+    alterarCadastroUsuario = new AlterarCadastroUsuario();
+    
    initComponents();
 }
 
@@ -183,19 +198,27 @@ public WepayProject() {
     }//GEN-LAST:event_jListarPontoActionPerformed
 
     private void jlLancarResultVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlLancarResultVendasActionPerformed
-        // TODO add your handling code here:
+        lancarResultadoVenda.w = this;
+        lancarResultadoVenda.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jlLancarResultVendasActionPerformed
 
     private void jEmitirFolhaPagamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEmitirFolhaPagamentosActionPerformed
-        // TODO add your handling code here:
+        emitirFolhaPagamento.w = this;
+        lancarResultadoVenda.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jEmitirFolhaPagamentosActionPerformed
 
     private void jLancarTaxaServActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLancarTaxaServActionPerformed
-        // TODO add your handling code here:
+        cadastrarTaxaServico.w = this;
+        cadastrarTaxaServico.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jLancarTaxaServActionPerformed
 
     private void jAlterarCadEmpregadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAlterarCadEmpregadoActionPerformed
-        // TODO add your handling code here:
+        alterarCadastroUsuario.w = this;
+        alterarCadastroUsuario.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jAlterarCadEmpregadoActionPerformed
 
     

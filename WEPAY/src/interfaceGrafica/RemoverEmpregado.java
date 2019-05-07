@@ -7,6 +7,7 @@ public class RemoverEmpregado extends javax.swing.JFrame {
 public WepayProject w;
 
     public RemoverEmpregado() {
+        this.setLocationRelativeTo(null);
         initComponents();
     }
 

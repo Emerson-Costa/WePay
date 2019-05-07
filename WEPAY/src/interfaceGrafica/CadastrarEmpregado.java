@@ -7,6 +7,7 @@ public class CadastrarEmpregado extends javax.swing.JFrame {
 public WepayProject w;
    
     public CadastrarEmpregado() {
+        this.setLocationRelativeTo(null);
         initComponents();
         jTipo.addItem("Assalariado");
         jTipo.addItem("Comissionado");

@@ -9,6 +9,7 @@ public class Ponto extends javax.swing.JFrame {
 public WepayProject w;
     
     public Ponto() {
+        this.setLocationRelativeTo(null);
         initComponents();
         
         for(int i = 0 ; i <= 23 ;i++){
