@@ -181,7 +181,7 @@ public WepayProject w;
 
     private void jBaterPontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaterPontoActionPerformed
        
-       int id=  Integer.parseInt(jCod.getText());
+      /* int id=  Integer.parseInt(jCod.getText());
        Empregado e =  w.s.getEmpregado().get(id);
        
        CartaoPonto cartaoPonto = new CartaoPonto(e,jHora.getSelectedItem()+"",jMin.getSelectedItem()+""
@@ -189,7 +189,7 @@ public WepayProject w;
        w.s.getPonto().add(cartaoPonto);
        
        this.setVisible(false);
-       w.setVisible(true);
+       w.setVisible(true);*/
     }//GEN-LAST:event_jBaterPontoActionPerformed
 
    

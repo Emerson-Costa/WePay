@@ -135,7 +135,7 @@ public WepayProject w;
        
           tipo = ""+jTipo.getSelectedItem(); 
        
-       w.s.cadastrarFuncionario(nome, endereco, tipo);
+       w.s.cadastrarEmpregado(nome, endereco, tipo);
        JOptionPane.showMessageDialog(null,"Usuário Cadastrado No Sistema");
        jNome.setText("");
        jEndereco.setText("");

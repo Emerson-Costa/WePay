@@ -3,7 +3,6 @@ package classes;
 
 public class CartaoPonto{
     private Empregado empregado;
-    
     private String horaChegada;
     private String minChegada;
     private String horaSaida;
@@ -12,7 +11,7 @@ public class CartaoPonto{
     String horasTrabalhadas;
    
     public String toString() {
-        return "empregado: " + empregado.getNome() + "\nhora Chegada: " + horaChegada + ":" + minChegada + "\nhora Saida: " + horaSaida + ":" + minSaida+"\nhoras Trabalhadas: "+horasTrabalhadas+"\n\n";
+        return "\nempregado: " + empregado.getNome() + "\nhora Chegada: " + horaChegada + ":" + minChegada + "\nhora Saida: " + horaSaida + ":" + minSaida+"\nhoras Trabalhadas: "+horasTrabalhadas+"\n";
     }
     
 

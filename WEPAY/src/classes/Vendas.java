@@ -15,7 +15,7 @@ public class Vendas {
     
     @Override
     public String toString() {
-       return "nome do empregado: "+nomeEmpregado+"\nproduto vendido: "+produtoVendido+"\nvalor: "+valorProduto+"\n\n";
+       return "\nnome do empregado: "+nomeEmpregado+"\nproduto vendido: "+produtoVendido+"\nvalor: "+valorProduto+"\n";
     }
 
     public int getCodEmpregado() {

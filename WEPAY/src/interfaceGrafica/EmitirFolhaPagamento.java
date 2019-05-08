@@ -142,7 +142,7 @@ public class EmitirFolhaPagamento extends javax.swing.JFrame {
         int ano            = Integer.parseInt(jAno.getText());
         float salarioBruto = Float.parseFloat(jSalario.getText());
                 
-        System.out.println(w.s.emitirFolhaDePagamento(codEmpregado, dia, mes, ano, salarioBruto));      
+             
     }//GEN-LAST:event_jEmitirActionPerformed
 
     private void jMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMesActionPerformed

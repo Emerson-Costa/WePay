@@ -186,7 +186,7 @@ public WepayProject(){
     private void jListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListarActionPerformed
       
         System.out.println("EMPREGADOS CADASTRADOS");
-        System.out.println( s.imprimirFuncionarios());
+        System.out.println( s.imprimirEmpregado());
       
     }//GEN-LAST:event_jListarActionPerformed
 

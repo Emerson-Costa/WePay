@@ -62,10 +62,10 @@ public class FolhaDePagamento {
 
     @Override
     public String toString() {
-        return "data do pagamento: "+data.toString()+"\nnome do empregado: "+nomeDoEmpregado+
+        return "\ndata do pagamento: "+data.toString()+"\nnome do empregado: "+nomeDoEmpregado+
                  "\nsalario bruto: "+salarioBruto+"\nsalario com desconto: "+salarioDesconto+
                  "\ndesconto inss: "+inss+"\ndesconto plano de saude: "+planoDeSaude+
-                 "\ndesconto auxilio creche: "+auxilioCreche+"\n\n";
+                 "\ndesconto auxilio creche: "+auxilioCreche+"\n";
     }
 
     ////////////////////////////Encapsulamento//////////////////////////////////

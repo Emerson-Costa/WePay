@@ -78,7 +78,7 @@ public WepayProject w;
 
     private void jRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRemoverActionPerformed
        int id = Integer.parseInt(jCodigo.getText());
-       w.s.removerFuncionario(id);
+       w.s.removerEmpregado(id);
        JOptionPane.showMessageDialog(null,"Usuário Removido do Sistema");
        this.setVisible(false);
        w.setVisible(true);

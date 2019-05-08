@@ -16,7 +16,7 @@ public class TaxaDeServicos {
 
     @Override
     public String toString() {
-        return "id emepregado: "+idEmpregado+"\nnome empregado: "+nomeEmpregado+"\nplano saude: "+planoDeSaude+"\nauxilio creche: "+auxilioCreche+"\n\n";
+        return "\nid emepregado: "+idEmpregado+"\nnome empregado: "+nomeEmpregado+"\nplano saude: "+planoDeSaude+"\nauxilio creche: "+auxilioCreche+"\n";
     }
     
     public float taxaPlanoSaude(float salario){

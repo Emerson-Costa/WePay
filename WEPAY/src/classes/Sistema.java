@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Sistema {
     
-    private ArrayList<Empregado> empregado;
+    private ArrayList<Empregado> empregados;
     private ArrayList<FolhaDePagamento>folhaDePagamentos;
     private ArrayList<Vendas>vendas;
     private ArrayList<CartaoPonto> ponto;
@@ -15,59 +15,67 @@ public class Sistema {
    
     public Sistema(){
         
-      empregado         =  new ArrayList<Empregado>();
+      empregados         =  new ArrayList<Empregado>();
       folhaDePagamentos =  new ArrayList<FolhaDePagamento>();
       vendas            =  new ArrayList<Vendas>();
       ponto             =  new ArrayList<CartaoPonto>();
       taxaDeServicos    =  new ArrayList<TaxaDeServicos>();
     }
     
-    public boolean cadastrarFuncionario(String nome, String endereco, String tipo){
+    public boolean cadastrarEmpregado(String nome, String endereco, String tipo){
          Empregado e = new Empregado(nome, endereco, tipo);
          e.setId(idEmpregados);
          idEmpregados++;
-         empregado.add(e);
+         empregados.add(e);
          return true;    
     }
     
-    public boolean alterarCadastroFuncionario(int indice,String nome, String endereco, String tipo){
-        empregado.get(indice).setNome(nome);
-        empregado.get(indice).setEndereco(endereco);
-        empregado.get(indice).setTipo(tipo);
+    public boolean alterarCadastroEmpregado(int indice,String nome, String endereco, String tipo){
+        empregados.get(indice).setNome(nome);
+        empregados.get(indice).setEndereco(endereco);
+        empregados.get(indice).setTipo(tipo);
         return true;
     }
     
-    public boolean removerFuncionario(int id){
-        for(int i = 0 ; i < empregado.size() ; i++){
-            if(empregado.get(i).getId() == id){
-                empregado.remove(i);
+    public boolean removerEmpregado(int id){
+        for(int i = 0 ; i < empregados.size() ; i++){
+            if(empregados.get(i).getId() == id){
+                empregados.remove(i);
                 return true;
             }
         }
         return false;
     }
     
-    public void lancarPontoCartao(int id){
+    public boolean lancarPontoCartao(int id, String horaChegada, String minChegada, String horaSaida, String minSaida){
         
+        for(int i = 0; i < empregados.size() ; i++){
+           if(empregados.get(i).getId() == id){
+             CartaoPonto p = new CartaoPonto(empregados.get(id), horaChegada, minChegada, horaSaida, minSaida);
+             ponto.add(p);
+             return true;
+           } 
+        }
+        return false;  
     }
     
-     public String emitirFolhaDePagamento(int codEmpregado, int dia, int mes, int ano, float salarioBruto){
+    public boolean emitirFolhaDePagamento(int codEmpregado, int dia, int mes, int ano, float salarioBruto){
         
-        for(int i = 0 ; i < empregado.size() ; i++){
-           if(empregado.get(i).getId() == codEmpregado){
-              FolhaDePagamento f = new FolhaDePagamento(dia, mes, ano,codEmpregado, empregado.get(i).getNome(),
+        for(int i = 0 ; i < empregados.size() ; i++){
+           if(empregados.get(i).getId() == codEmpregado){
+              FolhaDePagamento f = new FolhaDePagamento(dia, mes, ano,codEmpregado, empregados.get(i).getNome(),
                                                         salarioBruto,taxaDeServicos.get(i));
               folhaDePagamentos.add(f);
-              return folhaDePagamentos.toString();
+              return true;
            }
         }      
-        return "Funcionário não encontrado!";
+        return false;
     }
     
     public boolean lancarResultadoVendas(int codEmpregado, String produtoVendido, float valorProduto){
-        for(int i = 0; i < empregado.size() ; i++){
-            if(empregado.get(i).getId() == codEmpregado){
-                Vendas venda = new Vendas(codEmpregado, empregado.get(i).getNome(), produtoVendido, valorProduto);
+        for(int i = 0; i < empregados.size() ; i++){
+            if(empregados.get(i).getId() == codEmpregado){
+                Vendas venda = new Vendas(codEmpregado, empregados.get(i).getNome(), produtoVendido, valorProduto);
                 vendas.add(venda);
                 return true;
             }
@@ -76,9 +84,9 @@ public class Sistema {
     }
     
     public boolean lancarTaxaDeServicos(int idEmpregado, boolean planoDeSaude, boolean auxilioCreche){
-      for(int i = 0; i < empregado.size() ; i++){
-            if(empregado.get(i).getId() == idEmpregado){
-                TaxaDeServicos servicos = new TaxaDeServicos(idEmpregado,empregado.get(i).getNome(), planoDeSaude, auxilioCreche);
+      for(int i = 0; i < empregados.size() ; i++){
+            if(empregados.get(i).getId() == idEmpregado){
+                TaxaDeServicos servicos = new TaxaDeServicos(idEmpregado,empregados.get(i).getNome(), planoDeSaude, auxilioCreche);
                 taxaDeServicos.add(servicos);
                 return true;
             }
@@ -86,12 +94,32 @@ public class Sistema {
         return false;
     }
     
+    public String imprimirEmpregado() {
+        
+        String s = "";
+        for(int i = 0 ; i < empregados.size() ; i++){
+            s += empregados.get(i).toString();
+        }
+        return s;
+    }
+    
+    public String imprimirFolhaPonto() {
+        
+        String s = "";
+        for(int i = 0 ; i < ponto.size() ; i++){
+            s += ponto.get(i).toString();
+        }
+        return s;
+    }
+    
+    /******************************************************encapsulamentos******************************************************************/
+    
     public ArrayList<Empregado> getEmpregado() {
-        return empregado;
+        return empregados;
     }
 
     public void setEmpregado(ArrayList<Empregado> empregado) {
-        this.empregado = empregado;
+        this.empregados = empregado;
     }
 
     public ArrayList<CartaoPonto> getPonto() {
@@ -110,23 +138,36 @@ public class Sistema {
         this.idEmpregados = qutdEmpregado;
     }
 
-   
-    public String imprimirFuncionarios() {
-        
-        String s = "";
-        for(int i = 0 ; i < empregado.size() ; i++){
-            s += empregado.get(i).toString();
-        }
-        return s;
+    public ArrayList<FolhaDePagamento> getFolhaDePagamentos() {
+        return folhaDePagamentos;
     }
-    
-    public String imprimirFolhaPonto() {
-        
-        String s = "";
-        for(int i = 0 ; i < ponto.size() ; i++){
-            s += ponto.get(i).toString();
-        }
-        return s;
+
+    public void setFolhaDePagamentos(ArrayList<FolhaDePagamento> folhaDePagamentos) {
+        this.folhaDePagamentos = folhaDePagamentos;
+    }
+
+    public ArrayList<Vendas> getVendas() {
+        return vendas;
+    }
+
+    public void setVendas(ArrayList<Vendas> vendas) {
+        this.vendas = vendas;
+    }
+
+    public ArrayList<TaxaDeServicos> getTaxaDeServicos() {
+        return taxaDeServicos;
+    }
+
+    public void setTaxaDeServicos(ArrayList<TaxaDeServicos> taxaDeServicos) {
+        this.taxaDeServicos = taxaDeServicos;
+    }
+
+    public int getIdEmpregados() {
+        return idEmpregados;
+    }
+
+    public void setIdEmpregados(int idEmpregados) {
+        this.idEmpregados = idEmpregados;
     }
     
 }
