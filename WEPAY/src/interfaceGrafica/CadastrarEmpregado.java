@@ -135,20 +135,26 @@ public WepayProject w;
       
        tipo = ""+jTipo.getSelectedItem(); 
        
+       boolean cadastrou;
        if(nome.equals("") || endereco.equals("") || tipo.equals("")){
          JOptionPane.showMessageDialog(null,"Todos os campos deverão ser preenchidos");
+         cadastrou = false;
        }else{
-           boolean cadastrou = w.s.cadastrarEmpregado(nome, endereco, tipo);
+           cadastrou = w.s.cadastrarEmpregado(nome, endereco, tipo);
            if(cadastrou == false){
              JOptionPane.showMessageDialog(null,"Erro no cadastro de usuário"); 
            }else{
              JOptionPane.showMessageDialog(null,"Usuário Cadastrado No Sistema");  
            }
        }
-       jNome.setText("");
-       jEndereco.setText("");
-       this.setVisible(false);
-       w.setVisible(true);
+       
+       if(cadastrou){
+         jNome.setText("");
+         jEndereco.setText("");
+         this.setVisible(false);
+         w.setVisible(true);  
+       }
+       
     }//GEN-LAST:event_jCadastrarActionPerformed
 
     private void jVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarActionPerformed
