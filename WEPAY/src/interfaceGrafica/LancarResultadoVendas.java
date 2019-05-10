@@ -114,13 +114,13 @@ public class LancarResultadoVendas extends javax.swing.JFrame {
        String produtoVendido = jNomeProduto.getText();
        float valorProduto    = Float.parseFloat(jValorProduto.getText());
        
-       boolean verificar =  w.s.lancarResultadoVendas(codEmpregado, produtoVendido, valorProduto);
+       /*boolean verificar =  w.s.lancarResultadoVendas(codEmpregado, produtoVendido, valorProduto);
        
        if(!verificar){
           JOptionPane.showMessageDialog(null,"Usuário não encontrado!");
        }else{
           JOptionPane.showMessageDialog(null,"Resultado de venda lançada!");
-       }
+       }*/
     }//GEN-LAST:event_jLancarResultadoActionPerformed
 
     private void jVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarActionPerformed

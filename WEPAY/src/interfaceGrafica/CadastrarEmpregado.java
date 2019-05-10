@@ -132,11 +132,19 @@ public WepayProject w;
        String nome = jNome.getText();
        String endereco = jEndereco.getText();
        String tipo = null;
+      
+       tipo = ""+jTipo.getSelectedItem(); 
        
-          tipo = ""+jTipo.getSelectedItem(); 
-       
-       w.s.cadastrarEmpregado(nome, endereco, tipo);
-       JOptionPane.showMessageDialog(null,"Usuário Cadastrado No Sistema");
+       if(nome.equals("") || endereco.equals("") || tipo.equals("")){
+         JOptionPane.showMessageDialog(null,"Todos os campos deverão ser preenchidos");
+       }else{
+           boolean cadastrou = w.s.cadastrarEmpregado(nome, endereco, tipo);
+           if(cadastrou == false){
+             JOptionPane.showMessageDialog(null,"Erro no cadastro de usuário"); 
+           }else{
+             JOptionPane.showMessageDialog(null,"Usuário Cadastrado No Sistema");  
+           }
+       }
        jNome.setText("");
        jEndereco.setText("");
        this.setVisible(false);

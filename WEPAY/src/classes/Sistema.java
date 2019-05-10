@@ -72,10 +72,10 @@ public class Sistema {
         return false;
     }
     
-    public boolean lancarResultadoVendas(int codEmpregado, String produtoVendido, float valorProduto){
+    public boolean lancarResultadoVendas(int codEmpregado, String produtoVendido, float valorProduto,int dia, int mes, int ano){
         for(int i = 0; i < empregados.size() ; i++){
             if(empregados.get(i).getId() == codEmpregado){
-                Vendas venda = new Vendas(codEmpregado, empregados.get(i).getNome(), produtoVendido, valorProduto);
+                Vendas venda = new Vendas(codEmpregado, empregados.get(i).getNome(), produtoVendido, valorProduto, dia,mes,ano);
                 vendas.add(venda);
                 return true;
             }
