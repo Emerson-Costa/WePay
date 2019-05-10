@@ -162,7 +162,6 @@ public class LancarResultadoVendas extends javax.swing.JFrame {
            }
        }
        
-       
        if(lancou){
          jCodFuncionario.setText("");
          jDia.setText("");

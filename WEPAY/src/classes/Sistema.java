@@ -95,12 +95,16 @@ public class Sistema {
     }
     
     public int buscarEmpregado(int codEmpregado){
-       for(int i=0; i < empregados.size() ; i++){
-           if(empregados.get(i).getId() == codEmpregado){
-              return i;
-           }
-       } 
-       return -1;
+         if(empregados.isEmpty()){
+              return -1; 
+         }else{
+              for(int i=0; i < empregados.size() ; i++){
+                if(empregados.get(i).getId() == codEmpregado){
+                  return i;
+                }
+              }  
+         }
+         return -1;
     }
     
     public String imprimirEmpregado() {
