@@ -140,10 +140,9 @@ public class LancarResultadoVendas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLancarResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLancarResultadoActionPerformed
-       boolean lancou;
+       boolean lancou = false;
        if(jDia.getText().equals("") || jMes.getText().equals("") || jAno.getText().equals("") || jNomeProduto.getText().equals("")){
            JOptionPane.showMessageDialog(null,"Todos os campos devem estar preenchidos!");
-           lancou = false;
        }else{
            int codEmpregado      = Integer.parseInt(jCodFuncionario.getText());
            int dia               = Integer.parseInt(jDia.getText());
@@ -152,13 +151,11 @@ public class LancarResultadoVendas extends javax.swing.JFrame {
            String produtoVendido = jNomeProduto.getText();
            float valorProduto    = Float.parseFloat(jValorProduto.getText());
            
-           if(codEmpregado != w.s.buscarEmpregado(codEmpregado)){
-             JOptionPane.showMessageDialog(null,"Usuário não encontrado!");  
-             lancou = false;
+           if(w.s.buscarEmpregado(codEmpregado) == -1){
+             JOptionPane.showMessageDialog(null,"Empregado nao cadastrado no sistema!");  
            }else{
              lancou = w.s.lancarResultadoVendas(codEmpregado, produtoVendido, valorProduto, dia, mes, ano);
              JOptionPane.showMessageDialog(null,"Resultado da Venda lancada no Sistema!");
-             lancou = true;
            }
        }
        
@@ -176,7 +173,12 @@ public class LancarResultadoVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_jLancarResultadoActionPerformed
 
     private void jVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarActionPerformed
-       this.setVisible(false);
+       jCodFuncionario.setText("");
+       jDia.setText("");
+       jMes.setText("");
+       jAno.setText("");
+       jNomeProduto.setText("");
+       jValorProduto.setText("");this.setVisible(false);
        w.setVisible(true);
     }//GEN-LAST:event_jVoltarActionPerformed
 
@@ -188,31 +190,7 @@ public class LancarResultadoVendas extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LancarResultadoVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LancarResultadoVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LancarResultadoVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LancarResultadoVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
+     
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LancarResultadoVendas().setVisible(true);

@@ -189,25 +189,24 @@ public WepayProject w;
         boolean verificar = false;
         if(jCod.getText().equals("")){
            JOptionPane.showMessageDialog(null,"Insira a ID dp Usuário!");
-           verificar = false;
         }else{
            if(jHora.getSelectedIndex() == 0){
              JOptionPane.showMessageDialog(null,"Informe o horário de entrada!"); 
-             verificar = false;
            }else{
               if(jHoraSair.getSelectedIndex() == 0){
                 JOptionPane.showMessageDialog(null,"Informe o horário de saída!");  
               }else{
                  int id=  Integer.parseInt(jCod.getText());
-                 Empregado e =  w.s.getEmpregado().get(id);
-                 if(w.s.buscarEmpregado(id) == id){
-                   CartaoPonto cartaoPonto = new CartaoPonto(e,jHora.getSelectedItem()+"",jMin.getSelectedItem()+""
-                                                      ,jHoraSair.getSelectedItem()+"",jMinSair.getSelectedItem()+"");
-                    verificar = w.s.getPonto().add(cartaoPonto);
-                    JOptionPane.showMessageDialog(null,"O ponto foi lancado no sistema!");
-                 }else{
-                     verificar = false;
+                 String horaChegada = jHora.getSelectedIndex()+"";
+                 String minChegada  = jMin.getSelectedIndex()+"";
+                 String horaSaida   = jHoraSair.getSelectedIndex()+"";
+                 String minSaida    = jMinSair.getSelectedIndex()+"";
+                 
+                 if( w.s.buscarEmpregado(id) == -1 ){
                      JOptionPane.showMessageDialog(null,"Empregado não cadastrado no sistema!");
+                 }else{
+                     verificar = w.s.lancarPontoCartao(id, horaChegada, minChegada, horaSaida, minSaida);
+                     JOptionPane.showMessageDialog(null,"O ponto foi lancado no sistema!");
                  } 
               }  
            }      

@@ -7,10 +7,14 @@ import javax.swing.JOptionPane;
 public class AlterarCadastroUsuario extends javax.swing.JFrame {
     public WepayProject w;
     boolean verifica;
+   
     
     public AlterarCadastroUsuario() {
         this.setLocationRelativeTo(null);
         initComponents();
+        jTipo.addItem("Assalariado");
+        jTipo.addItem("Comissionado");
+        jTipo.addItem("Concursado");
     }
 
    
@@ -154,7 +158,8 @@ public class AlterarCadastroUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jALterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jALterarActionPerformed
-      
+        
+       
     }//GEN-LAST:event_jALterarActionPerformed
 
     private void jNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNomeActionPerformed
@@ -177,11 +182,13 @@ public class AlterarCadastroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jVoltarActionPerformed
 
     private void jBuscarEmpregadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarEmpregadoActionPerformed
-         int cod = Integer.parseInt(jCod.getText());
+       int cod = Integer.parseInt(jCod.getText());
+       
        for(int i = 0; i < w.s.getEmpregado().size() ;i++){
            if(w.s.getEmpregado().get(i).getId() == cod){
               jNome.setText(w.s.getEmpregado().get(i).getNome());
               jEndereco.setText(w.s.getEmpregado().get(i).getEndereco());
+              jTipo.setSelectedIndex(2);//concertar este metodo
               return;
            }
        }

@@ -1,6 +1,8 @@
 
 package interfaceGrafica;
 
+import javax.swing.JOptionPane;
+
 
 public class EmitirFolhaPagamento extends javax.swing.JFrame {
     public WepayProject w;
@@ -136,11 +138,35 @@ public class EmitirFolhaPagamento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jEmitirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEmitirActionPerformed
-        int codEmpregado   = Integer.parseInt(jCodFuncionario.getText());
-        int dia            = Integer.parseInt(jDia.getText());
-        int mes            = Integer.parseInt(jMes.getText());
-        int ano            = Integer.parseInt(jAno.getText());
-        float salarioBruto = Float.parseFloat(jSalario.getText());
+        boolean emitiu = false;
+        if(jCodFuncionario.getText().equals("")|| jDia.getText().equals("") || jMes.getText().equals("") || 
+           jAno.getText().equals("") || jSalario.getText().equals("")){
+           JOptionPane.showMessageDialog(null,"Todos os campos devem estar preenchidos!");
+        }else{
+           int codEmpregado   = Integer.parseInt(jCodFuncionario.getText());
+           int dia            = Integer.parseInt(jDia.getText());
+           int mes            = Integer.parseInt(jMes.getText());
+           int ano            = Integer.parseInt(jAno.getText());
+           float salarioBruto = Float.parseFloat(jSalario.getText());
+            
+           if(w.s.buscarEmpregado(codEmpregado) == -1 ){
+               JOptionPane.showMessageDialog(null,"Empregado não encontrado!");
+           }else{
+               emitiu = w.s.emitirFolhaDePagamento(codEmpregado, dia, mes, ano, salarioBruto);
+               JOptionPane.showMessageDialog(null,"A folha de Pagamento foi lancada!");    
+           }
+           
+           if(emitiu){
+             jCodFuncionario.setText("");
+             jDia.setText("");
+             jMes.setText("");
+             jAno.setText("");
+             jSalario.setText("");
+             this.setVisible(false);
+             w.setVisible(true);  
+           }
+        }
+       
                 
              
     }//GEN-LAST:event_jEmitirActionPerformed
@@ -154,6 +180,11 @@ public class EmitirFolhaPagamento extends javax.swing.JFrame {
     }//GEN-LAST:event_jAnoActionPerformed
 
     private void jVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarActionPerformed
+      jCodFuncionario.setText("");
+      jDia.setText("");
+      jMes.setText("");
+      jAno.setText("");
+      jSalario.setText("");
       this.setVisible(false);
       w.setVisible(true);
     }//GEN-LAST:event_jVoltarActionPerformed

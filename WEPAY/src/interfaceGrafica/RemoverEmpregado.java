@@ -16,7 +16,7 @@ public WepayProject w;
     private void initComponents() {
 
         jRemover = new javax.swing.JToggleButton();
-        jCodigo = new javax.swing.JTextField();
+        jID = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jVoltar = new javax.swing.JToggleButton();
 
@@ -29,7 +29,7 @@ public WepayProject w;
             }
         });
 
-        jLabel1.setText("COD:");
+        jLabel1.setText("ID:");
 
         jVoltar.setText("VOLTAR");
         jVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -46,10 +46,10 @@ public WepayProject w;
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jID, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jRemover)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jVoltar)
@@ -60,7 +60,7 @@ public WepayProject w;
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
@@ -72,16 +72,31 @@ public WepayProject w;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarActionPerformed
+      jID.setText("");
       this.setVisible(false);
       w.setVisible(true);
     }//GEN-LAST:event_jVoltarActionPerformed
 
     private void jRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRemoverActionPerformed
-       int id = Integer.parseInt(jCodigo.getText());
-       w.s.removerEmpregado(id);
-       JOptionPane.showMessageDialog(null,"Usuário Removido do Sistema");
-       this.setVisible(false);
-       w.setVisible(true);
+       
+       boolean removeu = false;
+       if(jID.getText().equals("")){
+         JOptionPane.showMessageDialog(null,"Informe o codigo do empregado!");
+       }else{
+          int id = Integer.parseInt(jID.getText());
+          if(w.s.buscarEmpregado(id) == -1){
+             JOptionPane.showMessageDialog(null,"Empregado nao cadastrado no sistema!");
+          }else{
+             removeu = w.s.removerEmpregado(id);
+             JOptionPane.showMessageDialog(null,"Usuário Removido do Sistema");  
+          } 
+       }
+       
+       if(removeu){
+         jID.setText("");
+         this.setVisible(false);
+         w.setVisible(true);  
+       } 
     }//GEN-LAST:event_jRemoverActionPerformed
 
     public static void main(String args[]) {
@@ -117,7 +132,7 @@ public WepayProject w;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField jCodigo;
+    private javax.swing.JTextField jID;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JToggleButton jRemover;
     private javax.swing.JToggleButton jVoltar;

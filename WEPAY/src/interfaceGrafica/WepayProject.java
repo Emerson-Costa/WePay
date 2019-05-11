@@ -206,7 +206,7 @@ public WepayProject(){
 
     private void jEmitirFolhaPagamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEmitirFolhaPagamentosActionPerformed
         emitirFolhaPagamento.w = this;
-        lancarResultadoVenda.setVisible(true);
+        emitirFolhaPagamento.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jEmitirFolhaPagamentosActionPerformed
 
