@@ -3,6 +3,7 @@ package interfaceGrafica;
 
 import classes.CartaoPonto;
 import classes.Empregado;
+import javax.swing.JOptionPane;
 
 
 public class Ponto extends javax.swing.JFrame {
@@ -52,7 +53,7 @@ public WepayProject w;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Codigo:");
+        jLabel1.setText("ID:");
 
         jCod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,7 +105,7 @@ public WepayProject w;
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCod, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jCod, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -134,11 +135,11 @@ public WepayProject w;
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCod, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(37, 37, 37)
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -167,6 +168,11 @@ public WepayProject w;
     }//GEN-LAST:event_jCodActionPerformed
 
     private void jVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarActionPerformed
+      jCod.setText("");
+      jHora.setSelectedIndex(0);
+      jHoraSair.setSelectedIndex(0);
+      jMin.setSelectedIndex(0);
+      jMinSair.setSelectedIndex(0);
       this.setVisible(false);
       w.setVisible(true);
     }//GEN-LAST:event_jVoltarActionPerformed
@@ -180,16 +186,43 @@ public WepayProject w;
     }//GEN-LAST:event_jHoraActionPerformed
 
     private void jBaterPontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaterPontoActionPerformed
+        boolean verificar = false;
+        if(jCod.getText().equals("")){
+           JOptionPane.showMessageDialog(null,"Insira a ID dp Usuário!");
+           verificar = false;
+        }else{
+           if(jHora.getSelectedIndex() == 0){
+             JOptionPane.showMessageDialog(null,"Informe o horário de entrada!"); 
+             verificar = false;
+           }else{
+              if(jHoraSair.getSelectedIndex() == 0){
+                JOptionPane.showMessageDialog(null,"Informe o horário de saída!");  
+              }else{
+                 int id=  Integer.parseInt(jCod.getText());
+                 Empregado e =  w.s.getEmpregado().get(id);
+                 if(w.s.buscarEmpregado(id) == id){
+                   CartaoPonto cartaoPonto = new CartaoPonto(e,jHora.getSelectedItem()+"",jMin.getSelectedItem()+""
+                                                      ,jHoraSair.getSelectedItem()+"",jMinSair.getSelectedItem()+"");
+                    verificar = w.s.getPonto().add(cartaoPonto);
+                    JOptionPane.showMessageDialog(null,"O ponto foi lancado no sistema!");
+                 }else{
+                     verificar = false;
+                     JOptionPane.showMessageDialog(null,"Empregado não cadastrado no sistema!");
+                 } 
+              }  
+           }      
+        }
+      
+         if(verificar){
+           jCod.setText("");
+           jHora.setSelectedIndex(0);
+           jHoraSair.setSelectedIndex(0);
+           jMin.setSelectedIndex(0);
+           jMinSair.setSelectedIndex(0);
+           this.setVisible(false);
+           w.setVisible(true);
+         }
        
-      /* int id=  Integer.parseInt(jCod.getText());
-       Empregado e =  w.s.getEmpregado().get(id);
-       
-       CartaoPonto cartaoPonto = new CartaoPonto(e,jHora.getSelectedItem()+"",jMin.getSelectedItem()+""
-                                                ,jHoraSair.getSelectedItem()+"",jMinSair.getSelectedItem()+""); 
-       w.s.getPonto().add(cartaoPonto);
-       
-       this.setVisible(false);
-       w.setVisible(true);*/
     }//GEN-LAST:event_jBaterPontoActionPerformed
 
    

@@ -168,6 +168,7 @@ public WepayProject(){
     private void jCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarActionPerformed
       cadastrarEmpregado.w = this;
       cadastrarEmpregado.setVisible(true);
+     
       setVisible(false);
     }//GEN-LAST:event_jCadastrarActionPerformed
 

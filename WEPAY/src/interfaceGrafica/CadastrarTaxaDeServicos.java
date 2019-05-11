@@ -1,6 +1,8 @@
 
 package interfaceGrafica;
 
+import javax.swing.JOptionPane;
+
 public class CadastrarTaxaDeServicos extends javax.swing.JFrame {
     public WepayProject w;
     
@@ -120,20 +122,40 @@ public class CadastrarTaxaDeServicos extends javax.swing.JFrame {
     }//GEN-LAST:event_jPlanoSaudeActionPerformed
 
     private void jVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarActionPerformed
+      jID.setText("");
+      jPlanoSaude.setSelected(false);
+      jAuxilioCreche.setSelected(false);
       this.setVisible(false);
       w.setVisible(true);
     }//GEN-LAST:event_jVoltarActionPerformed
 
     private void jLancarTaxaServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLancarTaxaServicoActionPerformed
-        int     idEmpregado   = Integer.parseInt(jID.getText());
-        boolean planoDeSaude  = jPlanoSaude.isSelected();
-        boolean auxilioCreche = jPlanoSaude.isSelected();
         
-        boolean verificar =  verificar = w.s.lancarTaxaDeServicos(idEmpregado, planoDeSaude, auxilioCreche);
-        
-        if(!verificar){
-            System.err.println("Empregado nao encontrado!");
-        }  
+        boolean verificar; 
+        if(jID.getText().equals("")  ){
+          JOptionPane.showMessageDialog(null,"Informe a ID do empregado!");
+          verificar = false;
+        }else{
+           int     idEmpregado   = Integer.parseInt(jID.getText());
+           boolean planoDeSaude  = jPlanoSaude.isSelected();
+           boolean auxilioCreche = jAuxilioCreche.isSelected();   
+           
+           if(w.s.buscarEmpregado(idEmpregado) == idEmpregado){
+              verificar = w.s.lancarTaxaDeServicos(idEmpregado, planoDeSaude, auxilioCreche);  
+              JOptionPane.showMessageDialog(null,"A Taxa de Servico foi lancada!");
+           }else{
+              JOptionPane.showMessageDialog(null,"Empregado não encontrado!");
+              verificar = false;
+           }
+        }
+          
+        if(verificar){
+         jID.setText("");
+         jPlanoSaude.setSelected(false);
+         jAuxilioCreche.setSelected(false);
+         this.setVisible(false);
+         w.setVisible(true);  
+       }
     }//GEN-LAST:event_jLancarTaxaServicoActionPerformed
 
     /**

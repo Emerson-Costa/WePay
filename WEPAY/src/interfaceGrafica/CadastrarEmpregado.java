@@ -147,10 +147,11 @@ public WepayProject w;
              JOptionPane.showMessageDialog(null,"Usuário Cadastrado No Sistema");  
            }
        }
-       
+        
        if(cadastrou){
          jNome.setText("");
          jEndereco.setText("");
+         jTipo.setSelectedIndex(0);
          this.setVisible(false);
          w.setVisible(true);  
        }
@@ -159,6 +160,9 @@ public WepayProject w;
 
     private void jVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarActionPerformed
 
+      jNome.setText("");
+      jEndereco.setText("");
+       jTipo.setSelectedIndex(0);
       this.setVisible(false);
       w.setVisible(true);
       
