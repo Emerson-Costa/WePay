@@ -62,8 +62,8 @@ public class Sistema {
     public boolean emitirFolhaDePagamento(int codEmpregado, int dia, int mes, int ano, float salarioBruto){
         
         for(int i = 0 ; i < empregados.size() ; i++){
-           if(empregados.get(i).getId() == codEmpregado){
-              FolhaDePagamento f = new FolhaDePagamento(dia, mes, ano,codEmpregado, empregados.get(i).getNome(),
+           if(empregados.get(i).getId() == codEmpregado && taxaDeServicos.get(i).getIdEmpregado() == codEmpregado){
+              FolhaDePagamento f = new FolhaDePagamento(dia, mes, ano,empregados.get(i).getId(), empregados.get(i).getNome(),
                                                         salarioBruto,taxaDeServicos.get(i));
               folhaDePagamentos.add(f);
               return true;

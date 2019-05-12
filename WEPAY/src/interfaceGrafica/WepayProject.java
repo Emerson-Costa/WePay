@@ -93,7 +93,7 @@ public WepayProject(){
             }
         });
 
-        jEmitirFolhaPagamentos.setText("EMITIR FOLHA DE PAGAMAENTOS");
+        jEmitirFolhaPagamentos.setText("EMITIR FOLHA DE PAGAMENTOS");
         jEmitirFolhaPagamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jEmitirFolhaPagamentosActionPerformed(evt);

@@ -6,7 +6,6 @@ import javax.swing.JOptionPane;
 
 public class AlterarCadastroUsuario extends javax.swing.JFrame {
     public WepayProject w;
-    boolean verifica;
    
     
     public AlterarCadastroUsuario() {
@@ -78,7 +77,7 @@ public class AlterarCadastroUsuario extends javax.swing.JFrame {
 
         jLabel4.setText("ALTERAR CADASTRO EMPREGADO");
 
-        jLabel5.setText("Cod:");
+        jLabel5.setText("ID:");
 
         jBuscarEmpregado.setText("Buscar Empregado");
         jBuscarEmpregado.addActionListener(new java.awt.event.ActionListener() {
@@ -91,10 +90,6 @@ public class AlterarCadastroUsuario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,14 +112,17 @@ public class AlterarCadastroUsuario extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jLabel5)
-                                    .addGap(48, 48, 48)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jNome, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jCod, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jBuscarEmpregado))))))
+                                    .addGap(3, 3, 3)))
+                            .addComponent(jNome, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(20, 20, 20))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(125, 125, 125)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBuscarEmpregado)
+                    .addComponent(jLabel4))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +156,26 @@ public class AlterarCadastroUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jALterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jALterarActionPerformed
+        boolean alterou = false;
+        if(jCod.getText().equals("")){
+           JOptionPane.showMessageDialog(null,"Informe o cod do empregado");
+        }else{
+           int cod         = Integer.parseInt(jCod.getText());  
+           String nome     = jNome.getText();
+           String endereco = jEndereco.getText();
+           String tipo     = jTipo.getSelectedItem()+"";
+           alterou = w.s.alterarCadastroEmpregado(cod, nome, endereco, tipo);
+           JOptionPane.showMessageDialog(null,"Cadastro alterado com sucesso!");
+        }
+         
         
+        if(alterou){
+         jNome.setText("");
+         jEndereco.setText("");
+         jTipo.setSelectedIndex(0);
+         this.setVisible(false);
+         w.setVisible(true);  
+       }        
        
     }//GEN-LAST:event_jALterarActionPerformed
 
@@ -175,24 +192,39 @@ public class AlterarCadastroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jEnderecoActionPerformed
 
     private void jVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarActionPerformed
-
+        jNome.setText("");
+        jEndereco.setText("");
+        jTipo.setSelectedIndex(0);
         this.setVisible(false);
         w.setVisible(true);
 
     }//GEN-LAST:event_jVoltarActionPerformed
 
     private void jBuscarEmpregadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarEmpregadoActionPerformed
-       int cod = Integer.parseInt(jCod.getText());
-       
-       for(int i = 0; i < w.s.getEmpregado().size() ;i++){
-           if(w.s.getEmpregado().get(i).getId() == cod){
-              jNome.setText(w.s.getEmpregado().get(i).getNome());
-              jEndereco.setText(w.s.getEmpregado().get(i).getEndereco());
-              jTipo.setSelectedIndex(2);//concertar este metodo
-              return;
-           }
-       }
-       JOptionPane.showMessageDialog(null,"Informe a ID do empregado e clique em Buscar Empregado ");
+
+       if(jCod.getText().equals("")){
+         JOptionPane.showMessageDialog(null,"Informe a ID do empregado!");  
+       }else{
+          int cod = Integer.parseInt(jCod.getText());
+          if(w.s.buscarEmpregado(cod) == -1){
+            JOptionPane.showMessageDialog(null,"Empregado nao cadastrado no sistema!");   
+          }else{
+              for(int i = 0; i < w.s.getEmpregado().size() ;i++){
+                 if(w.s.getEmpregado().get(i).getId() == cod){
+                    jNome.setText(w.s.getEmpregado().get(i).getNome());
+                    jEndereco.setText(w.s.getEmpregado().get(i).getEndereco());
+                 }  
+              }
+              String escolha = "";
+              for(int i2 = 0 ; i2 < 3 ; i2++){
+                jTipo.setSelectedIndex(i2-1);
+                escolha = jTipo.getSelectedIndex()+"";
+                if(escolha.equals(w.s.getEmpregado().get(i2).getTipo())){
+                  break;
+                }
+              }
+         }
+      }  
     }//GEN-LAST:event_jBuscarEmpregadoActionPerformed
 
     /**

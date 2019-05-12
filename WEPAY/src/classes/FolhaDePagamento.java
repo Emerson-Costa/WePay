@@ -16,9 +16,9 @@ public class FolhaDePagamento {
     FolhaDePagamento(int dia, int mes, int ano,int codEmpregado, String nomeDoEmpregado, float salarioBruto, TaxaDeServicos taxaDeServicos){
         this.data = new Data(dia, mes, ano);
         this.nomeDoEmpregado = nomeDoEmpregado;
+        this.codEmpregado = codEmpregado;
         this.salarioBruto = salarioBruto;
         this.salarioDesconto = calcularValorSalario(taxaDeServicos);
-        this.codEmpregado = codEmpregado;
     }
     
     public float impostos(){

@@ -135,7 +135,7 @@
     </Component>
     <Component class="javax.swing.JToggleButton" name="jEmitirFolhaPagamentos">
       <Properties>
-        <Property name="text" type="java.lang.String" value="EMITIR FOLHA DE PAGAMAENTOS"/>
+        <Property name="text" type="java.lang.String" value="EMITIR FOLHA DE PAGAMENTOS"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jEmitirFolhaPagamentosActionPerformed"/>
