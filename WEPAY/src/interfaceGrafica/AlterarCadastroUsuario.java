@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 public class AlterarCadastroUsuario extends javax.swing.JFrame {
     public WepayProject w;
-   
+    boolean alterou = false;
     
     public AlterarCadastroUsuario() {
         this.setLocationRelativeTo(null);
@@ -156,7 +156,7 @@ public class AlterarCadastroUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jALterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jALterarActionPerformed
-        boolean alterou = false;
+       
         if(jCod.getText().equals("")){
            JOptionPane.showMessageDialog(null,"Informe o cod do empregado");
         }else{
@@ -170,6 +170,7 @@ public class AlterarCadastroUsuario extends javax.swing.JFrame {
          
         
         if(alterou){
+         jCod.setText("");
          jNome.setText("");
          jEndereco.setText("");
          jTipo.setSelectedIndex(0);
@@ -192,6 +193,7 @@ public class AlterarCadastroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jEnderecoActionPerformed
 
     private void jVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarActionPerformed
+        jCod.setText("");
         jNome.setText("");
         jEndereco.setText("");
         jTipo.setSelectedIndex(0);
@@ -217,11 +219,16 @@ public class AlterarCadastroUsuario extends javax.swing.JFrame {
               }
               String escolha = "";
               for(int i2 = 0 ; i2 < 3 ; i2++){
-                jTipo.setSelectedIndex(i2-1);
+                if(i2 == 0){
+                  jTipo.setSelectedIndex(i2);  
+                }else{
+                  jTipo.setSelectedIndex(i2-1);  
+                }
                 escolha = jTipo.getSelectedIndex()+"";
                 if(escolha.equals(w.s.getEmpregado().get(i2).getTipo())){
-                  break;
+                   break;
                 }
+               
               }
          }
       }  
