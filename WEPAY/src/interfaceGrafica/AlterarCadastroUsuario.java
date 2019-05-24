@@ -203,7 +203,7 @@ public class AlterarCadastroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jVoltarActionPerformed
 
     private void jBuscarEmpregadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarEmpregadoActionPerformed
-
+       
        if(jCod.getText().equals("")){
          JOptionPane.showMessageDialog(null,"Informe a ID do empregado!");  
        }else{
@@ -217,19 +217,17 @@ public class AlterarCadastroUsuario extends javax.swing.JFrame {
                     jEndereco.setText(w.s.getEmpregado().get(i).getEndereco());
                  }  
               }
-              String escolha = "";
-              for(int i2 = 0 ; i2 < 3 ; i2++){
-                if(i2 == 0){
-                  jTipo.setSelectedIndex(i2);  
-                }else{
-                  jTipo.setSelectedIndex(i2-1);  
-                }
-                escolha = jTipo.getSelectedIndex()+"";
-                if(escolha.equals(w.s.getEmpregado().get(i2).getTipo())){
+              int indice=0;
+              jTipo.setSelectedIndex(indice);
+              while( indice < 3 ){ 
+                jTipo.setSelectedIndex(indice);
+                String escolha = jTipo.getSelectedItem()+"";
+                if(escolha.equals(w.s.getEmpregado().get(indice).getTipo())){
                    break;
                 }
-               
+                indice++;
               }
+              jTipo.setSelectedIndex(indice);
          }
       }  
     }//GEN-LAST:event_jBuscarEmpregadoActionPerformed

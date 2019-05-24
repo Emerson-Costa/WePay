@@ -132,10 +132,9 @@ public WepayProject w;
        String nome = jNome.getText();
        String endereco = jEndereco.getText();
        String tipo = null;
-      
        tipo = ""+jTipo.getSelectedItem(); 
-       
        boolean cadastrou;
+       
        if(nome.equals("") || endereco.equals("") || tipo.equals("")){
          JOptionPane.showMessageDialog(null,"Todos os campos deverão ser preenchidos");
          cadastrou = false;
@@ -162,7 +161,7 @@ public WepayProject w;
 
       jNome.setText("");
       jEndereco.setText("");
-       jTipo.setSelectedIndex(0);
+      jTipo.setSelectedIndex(0);
       this.setVisible(false);
       w.setVisible(true);
       
