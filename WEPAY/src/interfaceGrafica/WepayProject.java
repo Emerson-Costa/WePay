@@ -6,21 +6,22 @@ import classes.Sistema;
 
 public class WepayProject extends javax.swing.JFrame {
 
-
-Sistema                 s;
-CadastrarEmpregado      cadastrarEmpregado;
-RemoverEmpregado        removerEmpregado;
-Ponto                   ponto;
-LancarResultadoVendas   lancarResultadoVenda;
-EmitirFolhaPagamento    emitirFolhaPagamento;
-CadastrarTaxaDeServicos cadastrarTaxaServico;
-AlterarCadastroUsuario  alterarCadastroUsuario;
+public Sistema                 s;
+public CadastrarEmpregado      cadastrarEmpregado;
+public ExibirEmpregados        exibirEmpregados;
+public RemoverEmpregado        removerEmpregado;
+public Ponto                   ponto;
+public LancarResultadoVendas   lancarResultadoVenda;
+public EmitirFolhaPagamento    emitirFolhaPagamento;
+public CadastrarTaxaDeServicos cadastrarTaxaServico;
+public AlterarCadastroUsuario  alterarCadastroUsuario;
 
 public WepayProject(){
     
     this.setLocationRelativeTo(null);
     s = new Sistema();
     cadastrarEmpregado     = new CadastrarEmpregado();
+    exibirEmpregados       = new ExibirEmpregados();
     removerEmpregado       = new RemoverEmpregado();
     ponto                  = new Ponto();
     lancarResultadoVenda   = new LancarResultadoVendas();
@@ -185,10 +186,11 @@ public WepayProject(){
     }//GEN-LAST:event_jRemoverActionPerformed
 
     private void jListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListarActionPerformed
-      
-        System.out.println("EMPREGADOS CADASTRADOS");
-        System.out.println( s.imprimirEmpregado());
-      
+
+        exibirEmpregados.w = this;
+        exibirEmpregados.setVisible(true);
+        setVisible(false);
+        
     }//GEN-LAST:event_jListarActionPerformed
 
     private void jListarPontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListarPontoActionPerformed

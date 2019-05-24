@@ -131,11 +131,10 @@ public WepayProject w;
     private void jCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarActionPerformed
        String nome = jNome.getText();
        String endereco = jEndereco.getText();
-       String tipo = null;
-       tipo = ""+jTipo.getSelectedItem(); 
+       int tipo = jTipo.getSelectedIndex(); 
        boolean cadastrou;
        
-       if(nome.equals("") || endereco.equals("") || tipo.equals("")){
+       if(nome.equals("") || endereco.equals("")){
          JOptionPane.showMessageDialog(null,"Todos os campos deverão ser preenchidos");
          cadastrou = false;
        }else{

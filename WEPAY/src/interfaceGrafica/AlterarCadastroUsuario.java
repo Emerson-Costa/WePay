@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 public class AlterarCadastroUsuario extends javax.swing.JFrame {
     public WepayProject w;
-    boolean alterou = false;
+    public boolean alterou = false;
     
     public AlterarCadastroUsuario() {
         this.setLocationRelativeTo(null);
@@ -163,12 +163,11 @@ public class AlterarCadastroUsuario extends javax.swing.JFrame {
            int cod         = Integer.parseInt(jCod.getText());  
            String nome     = jNome.getText();
            String endereco = jEndereco.getText();
-           String tipo     = jTipo.getSelectedItem()+"";
+           int tipo     = jTipo.getSelectedIndex();
            alterou = w.s.alterarCadastroEmpregado(cod, nome, endereco, tipo);
            JOptionPane.showMessageDialog(null,"Cadastro alterado com sucesso!");
         }
-         
-        
+            
         if(alterou){
          jCod.setText("");
          jNome.setText("");
@@ -215,19 +214,9 @@ public class AlterarCadastroUsuario extends javax.swing.JFrame {
                  if(w.s.getEmpregado().get(i).getId() == cod){
                     jNome.setText(w.s.getEmpregado().get(i).getNome());
                     jEndereco.setText(w.s.getEmpregado().get(i).getEndereco());
+                    jTipo.setSelectedIndex(w.s.getEmpregado().get(i).getTipo());
                  }  
               }
-              int indice=0;
-              jTipo.setSelectedIndex(indice);
-              while( indice < 3 ){ 
-                jTipo.setSelectedIndex(indice);
-                String escolha = jTipo.getSelectedItem()+"";
-                if(escolha.equals(w.s.getEmpregado().get(indice).getTipo())){
-                   break;
-                }
-                indice++;
-              }
-              jTipo.setSelectedIndex(indice);
          }
       }  
     }//GEN-LAST:event_jBuscarEmpregadoActionPerformed

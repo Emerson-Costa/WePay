@@ -1,6 +1,7 @@
 
 package classes;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -22,7 +23,9 @@ public class Sistema {
       taxaDeServicos    =  new ArrayList<TaxaDeServicos>();
     }
     
-    public boolean cadastrarEmpregado(String nome, String endereco, String tipo){
+    public boolean cadastrarEmpregado(String nome, String endereco, int tipo) throws IOException{
+         ArquivosSistema s = new ArquivosSistema();
+         s.escreverArquivo("Funcionario.txt", nome+endereco+tipo);
          Empregado e = new Empregado(nome, endereco, tipo);
          e.setId(idEmpregados);
          idEmpregados++;
@@ -30,7 +33,7 @@ public class Sistema {
          return true;    
     }
     
-    public boolean alterarCadastroEmpregado(int indice,String nome, String endereco, String tipo){
+    public boolean alterarCadastroEmpregado(int indice,String nome, String endereco, int tipo){
         empregados.get(indice).setNome(nome);
         empregados.get(indice).setEndereco(endereco);
         empregados.get(indice).setTipo(tipo);

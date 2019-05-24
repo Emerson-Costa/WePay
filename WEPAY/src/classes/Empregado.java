@@ -5,10 +5,10 @@ package classes;
 public class Empregado {
     private String nome;
     private String endereco;
-    private String tipo;
+    private int tipo;
     private int id;
 
-    public Empregado(String nome, String endereco, String tipo) {
+    public Empregado(String nome, String endereco, int tipo) {
         this.nome = nome;
         this.endereco = endereco;
         this.tipo = tipo;
@@ -31,11 +31,11 @@ public class Empregado {
         this.endereco = endereco;
     }
 
-    public String getTipo() {
+    public int getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(int tipo) {
         this.tipo = tipo;
     }
 
