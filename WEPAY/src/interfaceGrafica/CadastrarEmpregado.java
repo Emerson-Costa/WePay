@@ -132,11 +132,10 @@ public WepayProject w;
        String nome = jNome.getText();
        String endereco = jEndereco.getText();
        int tipo = jTipo.getSelectedIndex(); 
-       boolean cadastrou;
+       boolean cadastrou = false;
        
        if(nome.equals("") || endereco.equals("")){
          JOptionPane.showMessageDialog(null,"Todos os campos deverão ser preenchidos");
-         cadastrou = false;
        }else{
            cadastrou = w.s.cadastrarEmpregado(nome, endereco, tipo);
            if(cadastrou == false){

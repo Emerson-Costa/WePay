@@ -22,10 +22,8 @@ public class Sistema {
       ponto             =  new ArrayList<CartaoPonto>();
       taxaDeServicos    =  new ArrayList<TaxaDeServicos>();
     }
-    
-    public boolean cadastrarEmpregado(String nome, String endereco, int tipo) throws IOException{
-         ArquivosSistema s = new ArquivosSistema();
-         s.escreverArquivo("Funcionario.txt", nome+endereco+tipo);
+
+    public boolean cadastrarEmpregado(String nome, String endereco, int tipo){
          Empregado e = new Empregado(nome, endereco, tipo);
          e.setId(idEmpregados);
          idEmpregados++;
@@ -34,6 +32,7 @@ public class Sistema {
     }
     
     public boolean alterarCadastroEmpregado(int indice,String nome, String endereco, int tipo){
+        //Quando for alterar cadastro apagar e escrever no arquivo novamente
         empregados.get(indice).setNome(nome);
         empregados.get(indice).setEndereco(endereco);
         empregados.get(indice).setTipo(tipo);
