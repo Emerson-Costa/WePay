@@ -8,12 +8,8 @@ public class Main {
 
    
     public static void main(String[] args) throws IOException {
-        ArquivosSistema s = new ArquivosSistema();
-        s.escreverArquivo("teste.txt", "Emerson");
-        s.escreverArquivo("teste.txt", "Karina");
-        s.apagarArquivo("teste.txt");
-     
-       //System.out.println("1: Selecione o o arquivo WepayProject.java.\n2: Pressione Shift + f6 para testar o programa.\n\n\n\n");
+        
+       System.out.println("1: Selecione o o arquivo WepayProject.java.\n2: Pressione Shift + f6 para testar o programa.\n\n\n\n");
        
         
        /**************************************Teste da classe Sistema e os teus métodos*********************************************/
