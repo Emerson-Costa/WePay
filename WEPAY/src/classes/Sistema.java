@@ -32,7 +32,6 @@ public class Sistema {
     }
     
     public boolean alterarCadastroEmpregado(int indice,String nome, String endereco, int tipo){
-        //Quando for alterar cadastro apagar e escrever no arquivo novamente
         empregados.get(indice).setNome(nome);
         empregados.get(indice).setEndereco(endereco);
         empregados.get(indice).setTipo(tipo);

@@ -1,13 +1,23 @@
 
 package interfaceGrafica;
 
+import classes.ArquivosSistema;
+import classes.Sistema;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class ExibirEmpregados extends javax.swing.JFrame {
     public WepayProject w;
-    
+    ArquivosSistema arqu = new ArquivosSistema();
     public ExibirEmpregados() {
         initComponents();
-       // jTextArea.setText(w.s.imprimirEmpregado());
+        try {
+            jTextArea.setText(arqu.lerArquivo("empregados"));
+        } catch (IOException ex) {
+            Logger.getLogger(ExibirEmpregados.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     

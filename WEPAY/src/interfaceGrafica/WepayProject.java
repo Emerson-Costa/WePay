@@ -1,11 +1,16 @@
 
 package interfaceGrafica;
 
+import classes.ArquivosSistema;
 import classes.Sistema;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class WepayProject extends javax.swing.JFrame {
 
+public ArquivosSistema         arqu;
 public Sistema                 s;
 public CadastrarEmpregado      cadastrarEmpregado;
 public ExibirEmpregados        exibirEmpregados;
@@ -17,9 +22,9 @@ public CadastrarTaxaDeServicos cadastrarTaxaServico;
 public AlterarCadastroUsuario  alterarCadastroUsuario;
 
 public WepayProject(){
-    
     this.setLocationRelativeTo(null);
-    s = new Sistema();
+    arqu                   = new ArquivosSistema();
+    s                      = new Sistema();
     cadastrarEmpregado     = new CadastrarEmpregado();
     exibirEmpregados       = new ExibirEmpregados();
     removerEmpregado       = new RemoverEmpregado();
@@ -28,8 +33,8 @@ public WepayProject(){
     emitirFolhaPagamento   = new EmitirFolhaPagamento();
     cadastrarTaxaServico   = new CadastrarTaxaDeServicos();
     alterarCadastroUsuario = new AlterarCadastroUsuario();
-    
-   initComponents();
+    initComponents();
+   
 }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -168,8 +173,7 @@ public WepayProject(){
 
     private void jCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarActionPerformed
       cadastrarEmpregado.w = this;
-      cadastrarEmpregado.setVisible(true);
-     
+      cadastrarEmpregado.setVisible(true);    
       setVisible(false);
     }//GEN-LAST:event_jCadastrarActionPerformed
 
@@ -186,11 +190,14 @@ public WepayProject(){
     }//GEN-LAST:event_jRemoverActionPerformed
 
     private void jListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListarActionPerformed
-
+        try{
+            arqu.escreverArquivo("empregados",s.imprimirEmpregado());
+        } catch (IOException ex) {
+            Logger.getLogger(WepayProject.class.getName()).log(Level.SEVERE, null, ex);
+        }
         exibirEmpregados.w = this;
         exibirEmpregados.setVisible(true);
-        setVisible(false);
-        
+        setVisible(false);        
     }//GEN-LAST:event_jListarActionPerformed
 
     private void jListarPontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListarPontoActionPerformed
@@ -226,7 +233,9 @@ public WepayProject(){
 
     
     public static void main(String args[]) {
-       
+        ArquivosSistema arqu = new ArquivosSistema();
+        arqu.criarArquivo("empregados");
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new WepayProject().setVisible(true);
