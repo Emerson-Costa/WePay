@@ -7,7 +7,6 @@ public class CadastrarTaxaDeServicos extends javax.swing.JFrame {
     public WepayProject w;
     
     public CadastrarTaxaDeServicos() {
-        this.setLocationRelativeTo(null);
         initComponents();
     }
 
@@ -111,6 +110,7 @@ public class CadastrarTaxaDeServicos extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jIDActionPerformed
@@ -122,6 +122,7 @@ public class CadastrarTaxaDeServicos extends javax.swing.JFrame {
     }//GEN-LAST:event_jPlanoSaudeActionPerformed
 
     private void jVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarActionPerformed
+      jVoltar.setSelected(false);
       jID.setText("");
       jPlanoSaude.setSelected(false);
       jAuxilioCreche.setSelected(false);
@@ -130,7 +131,7 @@ public class CadastrarTaxaDeServicos extends javax.swing.JFrame {
     }//GEN-LAST:event_jVoltarActionPerformed
 
     private void jLancarTaxaServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLancarTaxaServicoActionPerformed
-        
+        jLancarTaxaServico.setSelected(false);
         boolean verificar; 
         if(jID.getText().equals("")  ){
           JOptionPane.showMessageDialog(null,"Informe a ID do empregado!");

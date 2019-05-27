@@ -2,20 +2,18 @@
 package interfaceGrafica;
 
 import classes.ArquivosSistema;
-import classes.Sistema;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class ExibirEmpregados extends javax.swing.JFrame {
+public class ExibirPontosCartao extends javax.swing.JFrame {
     public WepayProject w;
     ArquivosSistema arqu = new ArquivosSistema();
-    public ExibirEmpregados() {
+    public ExibirPontosCartao() {
         initComponents();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -27,7 +25,7 @@ public class ExibirEmpregados extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("EMPREGADOS CADASTRADOS NO SISTEMA");
+        jLabel1.setText("Pontos dos Empregados");
 
         jVoltar.setText("Voltar");
         jVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -46,10 +44,6 @@ public class ExibirEmpregados extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(116, 116, 116))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -58,7 +52,11 @@ public class ExibirEmpregados extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(235, 235, 235)
                         .addComponent(jVoltar)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(172, 172, 172))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -68,33 +66,32 @@ public class ExibirEmpregados extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addComponent(jVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     public void exibirDados(){
        try {
-            jTextArea.setText(arqu.lerArquivo("empregados"));
+            jTextArea.setText(arqu.lerArquivo("pontosEmpregados"));
         } catch (IOException ex) {
             Logger.getLogger(ExibirEmpregados.class.getName()).log(Level.SEVERE, null, ex);
         }  
     }
+    
     private void jVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarActionPerformed
-      jVoltar.setSelected(false);
-      jTextArea.setText("");
-      this.setVisible(false);
-      w.setVisible(true);        
+        jVoltar.setSelected(false);
+        jTextArea.setText("");
+        this.setVisible(false);
+        w.setVisible(true);
     }//GEN-LAST:event_jVoltarActionPerformed
 
-    
     public static void main(String args[]) {
-        
+      
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ExibirEmpregados().setVisible(true);
+                new ExibirPontosCartao().setVisible(true);
             }
         });
     }

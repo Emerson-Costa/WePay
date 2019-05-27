@@ -8,7 +8,6 @@ public class EmitirFolhaPagamento extends javax.swing.JFrame {
     public WepayProject w;
    
     public EmitirFolhaPagamento() {
-        this.setLocationRelativeTo(null);
         initComponents();
     }
 
@@ -141,9 +140,11 @@ public class EmitirFolhaPagamento extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jEmitirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEmitirActionPerformed
+        jEmitir.setSelected(false);
         boolean emitiu = false;
         if(jCod.getText().equals("")|| jDia.getText().equals("") || jMes.getText().equals("") || 
            jAno.getText().equals("") || jSalario.getText().equals("")){
@@ -186,6 +187,7 @@ public class EmitirFolhaPagamento extends javax.swing.JFrame {
     }//GEN-LAST:event_jAnoActionPerformed
 
     private void jVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarActionPerformed
+      jVoltar.setSelected(false);
       jCod.setText("");
       jDia.setText("");
       jMes.setText("");

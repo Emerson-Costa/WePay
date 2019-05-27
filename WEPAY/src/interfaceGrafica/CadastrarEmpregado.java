@@ -7,7 +7,6 @@ public class CadastrarEmpregado extends javax.swing.JFrame {
 public WepayProject w;
    
     public CadastrarEmpregado() {
-        this.setLocationRelativeTo(null);
         initComponents();
         jTipo.addItem("Assalariado");
         jTipo.addItem("Comissionado");
@@ -122,6 +121,7 @@ public WepayProject w;
         jNome.getAccessibleContext().setAccessibleName("");
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEnderecoActionPerformed
@@ -129,6 +129,7 @@ public WepayProject w;
     }//GEN-LAST:event_jEnderecoActionPerformed
 
     private void jCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarActionPerformed
+       jCadastrar.setSelected(false);
        String nome = jNome.getText();
        String endereco = jEndereco.getText();
        int tipo = jTipo.getSelectedIndex(); 
@@ -156,7 +157,7 @@ public WepayProject w;
     }//GEN-LAST:event_jCadastrarActionPerformed
 
     private void jVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarActionPerformed
-
+      jVoltar.setSelected(false);
       jNome.setText("");
       jEndereco.setText("");
       jTipo.setSelectedIndex(0);

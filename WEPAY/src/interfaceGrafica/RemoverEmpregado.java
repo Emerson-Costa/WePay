@@ -7,7 +7,6 @@ public class RemoverEmpregado extends javax.swing.JFrame {
 public WepayProject w;
 
     public RemoverEmpregado() {
-        this.setLocationRelativeTo(null);
         initComponents();
     }
 
@@ -69,16 +68,18 @@ public WepayProject w;
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarActionPerformed
+      jVoltar.setSelected(false);
       jID.setText("");
       this.setVisible(false);
       w.setVisible(true);
     }//GEN-LAST:event_jVoltarActionPerformed
 
     private void jRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRemoverActionPerformed
-       
+       jRemover.setSelected(false);
        boolean removeu = false;
        if(jID.getText().equals("")){
          JOptionPane.showMessageDialog(null,"Informe o codigo do empregado!");

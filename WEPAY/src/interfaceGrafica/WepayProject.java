@@ -3,6 +3,8 @@ package interfaceGrafica;
 
 import classes.ArquivosSistema;
 import classes.Sistema;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,6 +16,7 @@ public ArquivosSistema         arqu;
 public Sistema                 s;
 public CadastrarEmpregado      cadastrarEmpregado;
 public ExibirEmpregados        exibirEmpregados;
+public ExibirPontosCartao      exibirPontosCartao;
 public RemoverEmpregado        removerEmpregado;
 public Ponto                   ponto;
 public LancarResultadoVendas   lancarResultadoVenda;
@@ -22,11 +25,12 @@ public CadastrarTaxaDeServicos cadastrarTaxaServico;
 public AlterarCadastroUsuario  alterarCadastroUsuario;
 
 public WepayProject(){
-    this.setLocationRelativeTo(null);
+    //this.setLocationRelativeTo(null);
     arqu                   = new ArquivosSistema();
     s                      = new Sistema();
     cadastrarEmpregado     = new CadastrarEmpregado();
     exibirEmpregados       = new ExibirEmpregados();
+    exibirPontosCartao     = new ExibirPontosCartao();
     removerEmpregado       = new RemoverEmpregado();
     ponto                  = new Ponto();
     lancarResultadoVenda   = new LancarResultadoVendas();
@@ -50,6 +54,7 @@ public WepayProject(){
         jEmitirFolhaPagamentos = new javax.swing.JToggleButton();
         jLancarTaxaServ = new javax.swing.JToggleButton();
         jAlterarCadEmpregado = new javax.swing.JToggleButton();
+        jSair = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,14 +83,14 @@ public WepayProject(){
             }
         });
 
-        jListar.setText("LISTAR FUNCIONÁRIOS");
+        jListar.setText("LISTAR EMPREGADOS");
         jListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jListarActionPerformed(evt);
             }
         });
 
-        jListarPonto.setText("LISTAR PONTOS FUNCIONARIOS");
+        jListarPonto.setText("LISTAR PONTO EMPREGADOS");
         jListarPonto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jListarPontoActionPerformed(evt);
@@ -120,6 +125,13 @@ public WepayProject(){
             }
         });
 
+        jSair.setText("SAIR");
+        jSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSairActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,8 +150,13 @@ public WepayProject(){
                     .addComponent(jAlterarCadEmpregado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(43, 43, 43))
             .addGroup(layout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addComponent(jSair, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -165,76 +182,107 @@ public WepayProject(){
                 .addComponent(jEmitirFolhaPagamentos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLancarTaxaServ)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jSair)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarActionPerformed
+      jCadastrar.setSelected(false);
       cadastrarEmpregado.w = this;
       cadastrarEmpregado.setVisible(true);    
       setVisible(false);
     }//GEN-LAST:event_jCadastrarActionPerformed
 
     private void jInserirPontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInserirPontoActionPerformed
+      jInserirPonto.setSelected(false);
       ponto.w = this;
       ponto.setVisible(true);
       setVisible(false);
     }//GEN-LAST:event_jInserirPontoActionPerformed
 
     private void jRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRemoverActionPerformed
+       jRemover.setSelected(false);
        removerEmpregado.w = this;
        removerEmpregado.setVisible(true);
        setVisible(false);
     }//GEN-LAST:event_jRemoverActionPerformed
 
     private void jListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListarActionPerformed
+        jListar.setSelected(false);
+        /*Neste trecho o arquivo é atualizado para as futuras correções*/
+        arqu.DeletarArquivo("empregados");
+        arqu.criarArquivo("empregados");
+        /**************************************************************/
         try{
             arqu.escreverArquivo("empregados",s.imprimirEmpregado());
         } catch (IOException ex) {
             Logger.getLogger(WepayProject.class.getName()).log(Level.SEVERE, null, ex);
         }
+        exibirEmpregados.exibirDados();
         exibirEmpregados.w = this;
         exibirEmpregados.setVisible(true);
         setVisible(false);        
     }//GEN-LAST:event_jListarActionPerformed
 
     private void jListarPontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListarPontoActionPerformed
-   
-        System.out.println("FOLHA PONTO DOS EMPREGADOS");
-        System.out.println(s.imprimirFolhaPonto());
-        
+        jListarPonto.setSelected(false);
+        /*Neste trecho o arquivo é atualizado para as futuras correções*/
+        arqu.DeletarArquivo("pontosEmpregados");
+        arqu.criarArquivo("pontosEmpregados");
+        /**************************************************************/
+        try{
+            arqu.escreverArquivo("pontosEmpregados",s.imprimirFolhaPonto());
+        } catch (IOException ex) {
+            Logger.getLogger(WepayProject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        exibirPontosCartao.exibirDados();
+        exibirPontosCartao.w = this;
+        exibirPontosCartao.setVisible(true);
+        setVisible(false);  
     }//GEN-LAST:event_jListarPontoActionPerformed
 
     private void jlLancarResultVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlLancarResultVendasActionPerformed
+        jlLancarResultVendas.setSelected(false);
         lancarResultadoVenda.w = this;
         lancarResultadoVenda.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jlLancarResultVendasActionPerformed
 
     private void jEmitirFolhaPagamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEmitirFolhaPagamentosActionPerformed
+        jEmitirFolhaPagamentos.setSelected(false);
         emitirFolhaPagamento.w = this;
         emitirFolhaPagamento.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jEmitirFolhaPagamentosActionPerformed
 
     private void jLancarTaxaServActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLancarTaxaServActionPerformed
+        jLancarTaxaServ.setSelected(false);
         cadastrarTaxaServico.w = this;
         cadastrarTaxaServico.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jLancarTaxaServActionPerformed
 
     private void jAlterarCadEmpregadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAlterarCadEmpregadoActionPerformed
+        jAlterarCadEmpregado.setSelected(false);
         alterarCadastroUsuario.w = this;
         alterarCadastroUsuario.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jAlterarCadEmpregadoActionPerformed
 
+    private void jSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairActionPerformed
+        jSair.setSelected(false);
+    }//GEN-LAST:event_jSairActionPerformed
+
     
     public static void main(String args[]) {
         ArquivosSistema arqu = new ArquivosSistema();
         arqu.criarArquivo("empregados");
+        arqu.criarArquivo("pontosEmpregados");
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -253,6 +301,7 @@ public WepayProject(){
     private javax.swing.JToggleButton jListar;
     private javax.swing.JToggleButton jListarPonto;
     private javax.swing.JToggleButton jRemover;
+    private javax.swing.JToggleButton jSair;
     private javax.swing.JToggleButton jlLancarResultVendas;
     // End of variables declaration//GEN-END:variables
 }

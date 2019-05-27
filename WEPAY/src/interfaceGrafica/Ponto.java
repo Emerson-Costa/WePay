@@ -10,7 +10,6 @@ public class Ponto extends javax.swing.JFrame {
 public WepayProject w;
     
     public Ponto() {
-        this.setLocationRelativeTo(null);
         initComponents();
         
         for(int i = 0 ; i <= 23 ;i++){
@@ -161,6 +160,7 @@ public WepayProject w;
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCodActionPerformed
@@ -186,6 +186,7 @@ public WepayProject w;
     }//GEN-LAST:event_jHoraActionPerformed
 
     private void jBaterPontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBaterPontoActionPerformed
+        jBaterPonto.setSelected(false);
         boolean verificar = false;
         if(jCod.getText().equals("")){
            JOptionPane.showMessageDialog(null,"Insira a ID dp Usuário!");

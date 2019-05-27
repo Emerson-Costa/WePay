@@ -9,7 +9,6 @@ public class AlterarCadastroUsuario extends javax.swing.JFrame {
     public boolean alterou = false;
     
     public AlterarCadastroUsuario() {
-        this.setLocationRelativeTo(null);
         initComponents();
         jTipo.addItem("Assalariado");
         jTipo.addItem("Comissionado");
@@ -153,6 +152,7 @@ public class AlterarCadastroUsuario extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jALterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jALterarActionPerformed

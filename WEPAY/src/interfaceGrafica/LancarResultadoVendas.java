@@ -8,7 +8,6 @@ public class LancarResultadoVendas extends javax.swing.JFrame {
     public WepayProject w;
    
     public LancarResultadoVendas() {
-        this.setLocationRelativeTo(null);
         initComponents();
     }
 
@@ -137,9 +136,11 @@ public class LancarResultadoVendas extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLancarResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLancarResultadoActionPerformed
+       jLancarResultado.setSelected(false);
        boolean lancou = false;
        if(jDia.getText().equals("") || jMes.getText().equals("") || jAno.getText().equals("") || jNomeProduto.getText().equals("")){
            JOptionPane.showMessageDialog(null,"Todos os campos devem estar preenchidos!");
@@ -173,6 +174,7 @@ public class LancarResultadoVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_jLancarResultadoActionPerformed
 
     private void jVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarActionPerformed
+       jVoltar.setSelected(false);
        jCodFuncionario.setText("");
        jDia.setText("");
        jMes.setText("");
