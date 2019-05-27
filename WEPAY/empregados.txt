@@ -1,0 +1,12 @@
+
+nome: dsfgdgdfgd
+endereco: dfgdfgdfgdfg
+tipo: 0
+id: 0
+
+
+
+
+
+
+

@@ -12,6 +12,7 @@ public class ExibirEmpregados extends javax.swing.JFrame {
     public WepayProject w;
     ArquivosSistema arqu = new ArquivosSistema();
     public ExibirEmpregados() {
+        this.setLocationRelativeTo(null);
         initComponents();
         try {
             jTextArea.setText(arqu.lerArquivo("empregados"));

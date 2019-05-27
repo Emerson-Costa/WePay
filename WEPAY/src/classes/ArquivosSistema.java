@@ -28,7 +28,7 @@ public class ArquivosSistema {
               String retorno="";//inicializa o retorno com vazio
               while(br.ready()) {//enquanto houver mais linhas
                 String linha = br.readLine(); //lê a proxima linha
-                retorno +=linha;//recebe o texto que foi lido.
+                retorno +=linha+"\n";//recebe o texto que foi lido.
                 System.out.println(linha);//exibe o conteudo da linha
               }
               br.close();//fecha a leitura do arquivoSistema
