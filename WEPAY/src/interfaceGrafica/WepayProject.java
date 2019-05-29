@@ -276,6 +276,10 @@ public WepayProject(){
 
     private void jSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairActionPerformed
         jSair.setSelected(false);
+        arqu.DeletarArquivo("empregados");
+        arqu.DeletarArquivo("pontosEmpregados");
+        System.exit(0);
+        
     }//GEN-LAST:event_jSairActionPerformed
 
     
