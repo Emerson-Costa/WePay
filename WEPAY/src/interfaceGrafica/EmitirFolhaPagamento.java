@@ -160,7 +160,8 @@ public class EmitirFolhaPagamento extends javax.swing.JFrame {
                JOptionPane.showMessageDialog(null,"Empregado não encontrado!");
            }else{
                emitiu = w.s.emitirFolhaDePagamento(codEmpregado, dia, mes, ano, salarioBruto);
-               JOptionPane.showMessageDialog(null,"A folha de Pagamento foi lancada!");    
+               JOptionPane.showMessageDialog(null,"A folha de Pagamento foi lancada!");  
+               System.out.println("\n\n\n\n\n\nFOLHA DE PAGAMENTO\n\n"+w.s.getFolhaDePagamentos());
            }
            
            if(emitiu){
